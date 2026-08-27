@@ -1,0 +1,653 @@
+{
+  "architecture/hero-facade": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#b9d8f7",
+    "alt": "Angled white louvre panels planted with shrubs across the face of an apartment building"
+  },
+  "architecture/atrium-garden": {
+    "width": 2000,
+    "height": 1326,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#87908b",
+    "alt": "Glazed atrium running the length of a building, its balconies lined with climbing greenery"
+  },
+  "architecture/curved-balconies": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#87898b",
+    "alt": "Curved glass office block with planting spilling over every balcony edge"
+  },
+  "architecture/glass-terraces": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#e4eef7",
+    "alt": "Corner of a glass tower with planted terraces stepping down each storey"
+  },
+  "architecture/green-campus": {
+    "width": 2000,
+    "height": 1499,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#8e978b",
+    "alt": "Aerial view of a glazed campus building wrapped in landscaped roof gardens"
+  },
+  "architecture/green-wall-tower": {
+    "width": 1500,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#87908b",
+    "alt": "Concrete tower rising behind a stepped living wall of dense planting"
+  },
+  "architecture/layered-block": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#87898b",
+    "alt": "Pale layered concrete office block cutting into a clear blue sky"
+  },
+  "architecture/louvre-facade": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#87898b",
+    "alt": "White louvre panels tilted across a facade, each one planted with flowering shrubs"
+  },
+  "architecture/office-terrace": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#f3f5f7",
+    "alt": "Office tower with deep planted terraces carried on rounded concrete columns"
+  },
+  "architecture/planted-tower": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#87898b",
+    "alt": "Residential tower with trees and shrubs growing on every balcony"
+  },
+  "architecture/round-courtyard": {
+    "width": 1499,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#e4eef0",
+    "alt": "Looking down into a circular white courtyard with a planted green centre"
+  },
+  "architecture/terrace-columns": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#8e9092",
+    "alt": "Slim columns holding up heavily planted terraces above a shaded walkway"
+  },
+  "architecture/timber-corner": {
+    "width": 1264,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#ebeef7",
+    "alt": "Timber-clad corner of an apartment block under a thick green roof"
+  },
+  "architecture/twin-towers": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#87908b",
+    "alt": "Two planted roof terraces seen from below against a bright blue sky"
+  },
+  "architecture/vertical-forest": {
+    "width": 1326,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#cfdff7",
+    "alt": "Tree-covered residential tower framed by white blossom"
+  },
+  "architecture/white-block": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#87898b",
+    "alt": "White apartment block with deep recessed balconies and dark glazing"
+  },
+  "places/villa-pool-palms": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#87898b",
+    "alt": "Single-storey white villa beside a turquoise pool, screened by palms and olive trees"
+  },
+  "places/timber-house-pines": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#8e9092",
+    "alt": "Dark red timber house at the edge of a pine wood, lit by low morning sun"
+  },
+  "places/white-villa-pool": {
+    "width": 2000,
+    "height": 1327,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#ebeef0",
+    "alt": "Modern white villa stepping down to a long swimming pool on a clear day"
+  },
+  "people/portrait-amina-belhaj": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800
+    ],
+    "color": "#9c898b",
+    "alt": "Amina Belhaj, founding partner, smiling in a red roll-neck jumper"
+  },
+  "people/portrait-jonas-vik": {
+    "width": 1334,
+    "height": 2000,
+    "widths": [
+      400,
+      800
+    ],
+    "color": "#b9cad3",
+    "alt": "Jonas Vik, head of acquisitions, in a grey jumper against a plain wall"
+  },
+  "people/portrait-clara-mendes": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800
+    ],
+    "color": "#87b4c5",
+    "alt": "Clara Mendes, design director, in a denim jacket in front of a teal wall"
+  },
+  "people/portrait-tomas-reiner": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800
+    ],
+    "color": "#c0adaf",
+    "alt": "Tomas Reiner, delivery lead, photographed against a deep red wall"
+  },
+  "features/curved-striped-tower": {
+    "width": 1568,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#b2d8e9",
+    "alt": "Two curved towers banded in blue and white, seen looking straight up between them"
+  },
+  "features/glass-towers-sky": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#8e9092",
+    "alt": "Dark glass office towers converging overhead under a heavy grey sky"
+  },
+  "features/architect-drawing-plans": {
+    "width": 2000,
+    "height": 1125,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "color": "#8e9092",
+    "alt": "An architect drawing a floor plan by hand on a drafting table"
+  },
+  "exteriors/timber-clad-house-lawn": {
+    "width": 2000,
+    "height": 1678,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#b2cae1",
+    "alt": "House clad in red timber and grey panels, with a stepping-stone path across the lawn"
+  },
+  "exteriors/timber-and-black-house": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#8e908b",
+    "alt": "House clad in pale timber and black boarding behind a low garden wall"
+  },
+  "exteriors/courtyard-house-under-tree": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#87898b",
+    "alt": "Dark timber courtyard house wrapped around a mature eucalyptus tree"
+  },
+  "exteriors/dark-clad-entrance": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#87898b",
+    "alt": "Entrance to a dark-clad house, the doorway lined in warm vertical timber"
+  },
+  "exteriors/poolside-glass-terrace": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#87898b",
+    "alt": "Glazed terrace with slim steel columns looking out over a small swimming pool"
+  },
+  "interiors/clerestory-window-lounge": {
+    "width": 2000,
+    "height": 1055,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#b9b4a8",
+    "alt": "Living room with a grey sofa, leather ottomans and a long clerestory window onto trees"
+  },
+  "interiors/neutral-sectional-salon": {
+    "width": 2000,
+    "height": 1125,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#d6d8d3",
+    "alt": "Pale sitting room with a deep sectional sofa, round timber table and a wall clock"
+  },
+  "interiors/teal-accent-lounge": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#dddfda",
+    "alt": "Open lounge with teal cushions, a fireplace and windows onto the rooftops beyond"
+  },
+  "interiors/pendant-lit-dining-room": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#ddd8d3",
+    "alt": "Dining table under amber glass pendants, opening into a sitting area beyond"
+  },
+  "interiors/herringbone-living-room": {
+    "width": 2000,
+    "height": 1335,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#f3f5f7",
+    "alt": "Bright room with herringbone parquet, a blue sofa and a long white sideboard"
+  },
+  "interiors/brick-loft-dining": {
+    "width": 2000,
+    "height": 1325,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#87898b",
+    "alt": "Warehouse loft with exposed brick, industrial pendant lamps and a long dining table"
+  },
+  "interiors/plant-filled-living-room": {
+    "width": 2000,
+    "height": 1488,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#f3f5f7",
+    "alt": "Sunlit living room full of houseplants, with a grey sofa and a bentwood chair"
+  },
+  "interiors/white-kitchen-dark-splashback": {
+    "width": 2000,
+    "height": 1328,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#ebeef0",
+    "alt": "White fitted kitchen with a dark tiled splashback and a stool at the island"
+  },
+  "interiors/minimal-navy-sofa-room": {
+    "width": 2000,
+    "height": 1335,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#dddfe1",
+    "alt": "Sparse white room with a navy two-seat sofa, a mirrored chest and a potted olive tree"
+  },
+  "interiors/timber-stair-atrium": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#e4e6e9",
+    "alt": "Double-height hall with an open timber and steel stair under brass pendant lights"
+  },
+  "interiors/white-tiled-bathroom": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#c7cac5",
+    "alt": "White tiled bathroom with a pedestal basin, round mirror and a bath under the window"
+  },
+  "interiors/red-armchair-apartment": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#ddd8d3",
+    "alt": "Apartment living and dining space with a red armchair and tall windows onto the street"
+  },
+  "interiors/corner-window-lounge": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#e4e6e9",
+    "alt": "Corner living room with a grey sectional, a glass coffee table and two tall windows"
+  },
+  "interiors/sage-wall-sofa": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#dddfe1",
+    "alt": "Sitting room with a pale sofa against a sage wall and two round timber tables"
+  },
+  "interiors/yellow-armchair-corner": {
+    "width": 2000,
+    "height": 1765,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#e4e6e9",
+    "alt": "Quiet corner with a mustard armchair, a brass floor lamp and a framed print on oak boards"
+  },
+  "interiors/coffered-ceiling-salon": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#cfd1d3",
+    "alt": "Formal salon with a coffered ceiling, marble fireplace and built-in display shelves"
+  },
+  "interiors/grey-family-living-room": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#dddfe1",
+    "alt": "Family living room in greys, with a corner sofa and shelving either side of the window"
+  },
+  "interiors/gallery-wall-loft": {
+    "width": 2000,
+    "height": 1500,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#f3f5f7",
+    "alt": "Loft living room with a framed gallery wall, a tan leather sofa and large houseplants"
+  },
+  "interiors/timber-ceiling-terrace": {
+    "width": 2000,
+    "height": 1500,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#e4e6e9",
+    "alt": "Lounge under a slatted timber ceiling, opening through full-height glass onto a terrace"
+  },
+  "interiors/dark-stone-bathroom": {
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "color": "#c7cacc",
+    "alt": "Dark stone bathroom with a freestanding tub and a long window above the vanity"
+  },
+  "interiors/open-stair-family-room": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#d6d8d3",
+    "alt": "Family room with a blue sofa beneath an open timber stair, a dog asleep on the rug"
+  },
+  "interiors/concrete-stair-dining": {
+    "width": 2000,
+    "height": 1333,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#e4e6e9",
+    "alt": "Dining table beside a black steel stair against a board-marked concrete wall"
+  },
+  "interiors/skylight-open-plan-kitchen": {
+    "width": 2000,
+    "height": 1360,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#e4e6e9",
+    "alt": "Open-plan kitchen and living space lit by a long skylight over the island"
+  },
+  "interiors/rattan-pendant-lounge": {
+    "width": 2000,
+    "height": 2000,
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "color": "#b9b4af",
+    "alt": "Living room with woven rattan pendants, a pale sofa and a patterned rug"
+  }
+}
