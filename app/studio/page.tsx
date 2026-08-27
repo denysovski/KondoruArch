@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
-import { amenities, processSteps, team } from '@/lib/content'
+import { Clock, DoorOpen, FileText, Info, Mail, MapPin, Phone } from 'lucide-react'
+import { amenities, team } from '@/lib/content'
+import { journey } from '@/lib/studio'
 import { awards, officeList, studioValues } from '@/lib/pages'
 import { Button, Heading, PageHero, Pill } from '@/components/ui-kit'
 import { SocialBubbles } from '@/components/social-bubbles'
@@ -164,37 +164,69 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section id="process" className="section page-section process">
+      <section id="process" className="section page-section">
         <div className="section-head split-head">
           <div>
             <div className="reveal">
               <Pill>How we work</Pill>
             </div>
-            <Heading className="section-title" text="Four movements from first sketch to handover" />
+            <Heading
+              className="section-title"
+              text="Four stages, and what you can walk away with after each"
+            />
           </div>
           <div className="section-head-side reveal" data-delay="0.1">
             <p className="muted">
-              Each stage ends with a decision you sign off, a fixed price for the next one, and a
-              document you can take to anyone else for a second opinion.
+              Read this one from your side of the table. Every stage ends with something on your desk
+              that belongs to you, and you can stop there and take it elsewhere. Most people do not.
+              We would rather you could.
             </p>
           </div>
         </div>
 
-        <div className="process-grid reveal-group tilt">
-          {processSteps.map((item) => (
-            <article key={item.title} className="process-card">
-              <h4>{item.title}</h4>
-              <p>{item.copy}</p>
-              <Link
-                className="process-corner"
-                href={item.href}
-                aria-label={`More about ` + item.title}
-              >
-                <ArrowRight size={17} strokeWidth={2.2} />
-              </Link>
+        <div className="journey reveal-group">
+          {journey.map((stage) => (
+            <article key={stage.title} className="journey-step">
+              <i className="journey-marker" aria-hidden="true">
+                <stage.icon size={22} strokeWidth={1.7} />
+              </i>
+
+              <div className="journey-body">
+                <h3>
+                  {stage.title}
+                  <span className="journey-clock">
+                    <Clock size={12} strokeWidth={2.4} />
+                    {stage.duration}
+                  </span>
+                </h3>
+                <p>{stage.copy}</p>
+              </div>
+
+              <div className="journey-outcomes">
+                <div className="journey-outcome">
+                  <FileText size={16} strokeWidth={2} />
+                  <span>
+                    <b>You end up with</b>
+                    {stage.deliverable}
+                  </span>
+                </div>
+                <div className="journey-outcome is-exit">
+                  <DoorOpen size={16} strokeWidth={2} />
+                  <span>
+                    <b>Stop here and</b>
+                    {stage.exit}
+                  </span>
+                </div>
+              </div>
             </article>
           ))}
         </div>
+
+        <p className="journey-note reveal">
+          <Info size={16} strokeWidth={2} />
+          Nothing above is a retainer. Each stage is quoted before it starts and invoiced when it
+          ends, so the most you are ever committed to is the one you are in.
+        </p>
       </section>
 
       <section id="awards" className="section page-section">

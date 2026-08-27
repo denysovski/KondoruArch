@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowUpRight, MapPin } from 'lucide-react'
+import { ArrowUpRight, Check, MapPin } from 'lucide-react'
 import { gallery } from '@/lib/content'
 import { projectDetail } from '@/lib/pages'
 import { Button, Heading, PageHero, Pill } from '@/components/ui-kit'
@@ -34,10 +34,54 @@ const projectsSchema = {
 }
 
 const categories = [
-  { id: 'residential', name: 'Residential', copy: 'Houses and apartment blocks' },
-  { id: 'cultural', name: 'Cultural', copy: 'Pavilions and civic halls' },
-  { id: 'workplace', name: 'Workplace', copy: 'Studios and headquarters' },
-  { id: 'research', name: 'Research', copy: 'Facade lab and prototypes' },
+  {
+    id: 'residential',
+    name: 'Residential',
+    meta: 'Since 2008',
+    copy: 'Houses and apartment blocks, eight to four hundred units. The bulk of the practice, and where the daylight rule costs us units and we let it.',
+    points: [
+      'Four hours of winter light modelled per apartment',
+      'Timber cores wherever the fire strategy allows them',
+      'A shared ground floor, never a lobby and a corridor',
+      'Measured for a full year after handover',
+    ],
+  },
+  {
+    id: 'cultural',
+    name: 'Cultural',
+    meta: 'Since 2016',
+    copy: 'Pavilions and civic halls that have to work on a wet Tuesday as well as an opening night. Acoustics and circulation lead the plan.',
+    points: [
+      'Long-span timber and steel, left visible',
+      'Reverberation tuned for speech and for music',
+      'A foyer that stays useful when nothing is on',
+      'Handed over to the people who run it, with a manual',
+    ],
+  },
+  {
+    id: 'workplace',
+    name: 'Workplace',
+    meta: 'Since 2019',
+    copy: 'Studios and headquarters built around how a company actually talks to itself, which is rarely in the meeting rooms it asked for.',
+    points: [
+      'One stair wide enough to sit on',
+      'Adaptive shading instead of more cooling plant',
+      'Desk density agreed before the plan is drawn',
+      'BREEAM Excellent as the floor, not the target',
+    ],
+  },
+  {
+    id: 'research',
+    name: 'Research',
+    meta: 'Ongoing',
+    copy: 'The facade lab. No client, no fee, and the source of most of the details that end up in the other three sectors.',
+    points: [
+      'A full-height rig tested across a real year',
+      'Four prototypes built and broken so far',
+      'Findings published yearly, flattering or not',
+      'Open to students and to anyone who asks',
+    ],
+  },
 ]
 
 export default function ProjectsPage() {
@@ -73,13 +117,26 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        <div className="group-grid reveal-group tilt">
+        <div className="group-grid cards-detail reveal-group tilt">
           {categories.map((category) => (
             <article key={category.id} id={category.id} className="group-card">
-              <h3>{category.name}</h3>
+              <div className="group-card-head">
+                <h3>{category.name}</h3>
+                <span className="group-meta">{category.meta}</span>
+              </div>
               <p>{category.copy}</p>
+              <ul className="group-points">
+                {category.points.map((point) => (
+                  <li key={point}>
+                    <Check size={12} strokeWidth={3} />
+                    {point}
+                  </li>
+                ))}
+              </ul>
               <span className="group-count">
-                {projectDetail.filter((p) => p.category === category.name).length} projects
+                {projectDetail.filter((p) => p.category === category.name).length === 1
+                  ? `1 project`
+                  : `${projectDetail.filter((p) => p.category === category.name).length} projects`}
               </span>
             </article>
           ))}

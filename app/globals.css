@@ -1976,21 +1976,24 @@ img {
   gap: 16px;
 }
 
+/* Frosted rather than solid, so the photograph behind the band stays
+   readable through the cards instead of being blocked out by them. */
 .band-metrics > div {
   padding: 24px 28px;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--blue-ink);
-  box-shadow: var(--shadow-card);
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease),
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  color: #fff;
+  transition: transform 0.5s var(--ease), background 0.5s var(--ease),
     border-color 0.5s var(--ease);
 }
 
 .band-metrics > div:hover {
   transform: translateX(8px);
-  border-color: var(--blue-200);
-  box-shadow: var(--shadow-card-hover);
+  background: rgba(255, 255, 255, 0.17);
+  border-color: rgba(255, 255, 255, 0.32);
 }
 
 .band-metrics strong {
@@ -1999,13 +2002,13 @@ img {
   font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.015em;
-  color: var(--blue-700);
+  color: #fff;
 }
 
 .band-metrics span {
   font-size: 14px;
   line-height: 1.7;
-  color: var(--muted-foreground);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* ---------------------------------------------------------------- *
@@ -5520,20 +5523,27 @@ img {
   display: block;
   padding: 24px 28px 22px;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--blue-ink);
-  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  color: #fff;
+  transition: background 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+
+.band-metric:hover {
+  background: rgba(255, 255, 255, 0.17);
+  border-color: rgba(255, 255, 255, 0.32);
 }
 
 .band-metric strong {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(38px, 4.2vw, 62px);
+  font-size: clamp(28px, 3.4vw, 52px);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1;
-  color: var(--blue-700);
+  color: #fff;
 }
 
 .band-metric b {
@@ -5543,7 +5553,7 @@ img {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--blue-ink);
+  color: #fff;
 }
 
 /* Direct child only: the counter renders its own <span> inside <strong>. */
@@ -5552,7 +5562,7 @@ img {
   max-width: 44ch;
   font-size: 12.5px;
   line-height: 1.65;
-  color: var(--muted-foreground);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .band-metric strong span {
@@ -5571,14 +5581,14 @@ img {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--surface-blue);
-  color: var(--blue-700);
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
   transition: background 0.35s var(--ease), color 0.35s var(--ease);
 }
 
 .band-metric:hover .band-metric-arrow {
-  background: var(--blue-700);
-  color: #fff;
+  background: #fff;
+  color: var(--blue-ink);
 }
 
 /* ---------------------------------------------------------------- *
@@ -7011,80 +7021,53 @@ a.group-card {
   gap: 10px;
   padding: 28px 28px 24px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.5s var(--ease), background 0.5s var(--ease),
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease),
     border-color 0.5s var(--ease);
 }
 
 .showcase-card:hover {
   transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.96);
-  border-color: transparent;
-}
-
-.showcase-card-index {
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.6);
-  transition: color 0.5s var(--ease);
+  border-color: var(--blue-200);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .showcase-card strong {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #fff;
-  transition: color 0.5s var(--ease);
+  line-height: 1.25;
+  color: var(--blue-ink);
 }
 
 .showcase-card p {
   margin: 0;
   font-size: 14.5px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.76);
-  transition: color 0.5s var(--ease);
+  color: var(--muted-foreground);
 }
 
 .showcase-card-more {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 12px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  /* auto, so the three links sit on one line however long the copy is */
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
   font-family: var(--font-display);
   font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.9);
-  transition: color 0.5s var(--ease), border-color 0.5s var(--ease);
+  color: var(--blue-700);
+  transition: color 0.4s var(--ease);
 }
 
 .showcase-card-more svg {
   transition: transform 0.4s var(--ease);
-}
-
-.showcase-card:hover .showcase-card-index {
-  color: var(--blue-500);
-}
-
-.showcase-card:hover strong,
-.showcase-card:hover .showcase-card-more {
-  color: var(--blue-ink);
-}
-
-.showcase-card:hover p {
-  color: var(--muted-foreground);
-}
-
-.showcase-card:hover .showcase-card-more {
-  border-color: var(--border);
 }
 
 .showcase-card:hover .showcase-card-more svg {
@@ -7507,4 +7490,351 @@ html:has(.static-page) *::after {
 .notfound-links a:hover {
   transform: translateX(6px);
   border-color: var(--blue-200);
+}
+
+/* ================================================================== *
+ * Collection and sector cards — a heading row, a paragraph, then the
+ * checks that actually differ between one collection and the next
+ * ================================================================== */
+
+.group-grid.cards-detail {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.group-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.group-meta {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-500);
+}
+
+.group-points {
+  display: grid;
+  gap: 9px;
+  margin: 4px 0 2px;
+  padding: 0;
+  list-style: none;
+}
+
+.group-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+.group-points svg {
+  flex: none;
+  margin-top: 5px;
+  color: var(--blue-500);
+}
+
+/* ================================================================== *
+ * Services — one wide call to action closing the four descriptions,
+ * instead of the same button repeated inside every fee panel
+ * ================================================================== */
+
+.service-start {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: clamp(44px, 5vw, 72px) var(--gutter) clamp(60px, 7vw, 100px);
+  border-top: 1px solid var(--border);
+}
+
+.service-start p {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted-foreground);
+}
+
+.service-start .button {
+  width: 100%;
+  justify-content: center;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  font-size: 15px;
+}
+
+/* ================================================================== *
+ * Studio — how a commission actually runs
+ *
+ * The home page lists the four stages. This is the same journey read
+ * from the client's side: what lands on your desk at each step, what it
+ * costs to stop there, and how long you wait. One spine, four beats.
+ * ================================================================== */
+
+.journey {
+  position: relative;
+  display: grid;
+  gap: 0;
+  margin-top: clamp(12px, 2vw, 28px);
+}
+
+/* The spine, drawn behind the markers rather than on each row, so it
+   reads as one continuous line down the whole section. */
+.journey::before {
+  content: '';
+  position: absolute;
+  top: 34px;
+  bottom: 34px;
+  left: 27px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--blue-200) 0%,
+    var(--blue-300) 50%,
+    var(--blue-200) 100%
+  );
+}
+
+.journey-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) minmax(0, 0.72fr);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: start;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.journey-step:last-child {
+  border-bottom: 0;
+}
+
+.journey-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--blue-700);
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.45s var(--ease), background 0.45s var(--ease),
+    color 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+
+.journey-step:hover .journey-marker {
+  transform: scale(1.08);
+  background: var(--blue-700);
+  border-color: var(--blue-700);
+  color: #fff;
+}
+
+.journey-body h3 {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2.1vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--blue-ink);
+}
+
+.journey-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-blue);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-700);
+}
+
+.journey-body p {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+
+/* The pair of outcomes: what you walk away with, and what it costs to
+   stop right here. Two short lines, deliberately symmetrical. */
+.journey-outcomes {
+  display: grid;
+  gap: 10px;
+}
+
+.journey-outcome {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: #fff;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.journey-step:hover .journey-outcome {
+  border-color: var(--blue-200);
+  transform: translateX(4px);
+}
+
+.journey-outcome svg {
+  margin-top: 4px;
+  color: var(--blue-500);
+}
+
+.journey-outcome b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.journey-outcome span {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--blue-ink);
+}
+
+.journey-outcome.is-exit {
+  background: var(--surface-tint);
+}
+
+.journey-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: clamp(28px, 3vw, 44px) 0 0;
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--blue-200);
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+.journey-note svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--blue-500);
+}
+
+/* ================================================================== *
+ * Recognition — a quick, even hover that leaves as fast as it arrives
+ * ================================================================== */
+
+.award-row {
+  position: relative;
+  overflow: hidden;
+  padding-left: 6px;
+  transition: background 0.22s var(--ease-soft);
+}
+
+/* A rule that wipes in from the left edge and back out again, instead
+   of the row itself shifting its padding and reflowing the text. */
+.award-row::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--blue-500);
+  transform: scaleY(0);
+  transform-origin: 50% 50%;
+  transition: transform 0.22s var(--ease-soft);
+}
+
+.award-row > * {
+  transition: transform 0.22s var(--ease-soft), color 0.22s var(--ease-soft);
+}
+
+.award-row:hover {
+  background: var(--surface-tint);
+  padding-left: 6px;
+}
+
+.award-row:hover::before {
+  transform: scaleY(1);
+}
+
+.award-row:hover .award-year,
+.award-row:hover strong {
+  transform: translateX(12px);
+}
+
+.award-row:hover .award-year {
+  color: var(--blue-700);
+}
+
+.award-row:hover .award-project {
+  color: var(--blue-700);
+}
+
+@media (max-width: 1080px) {
+  .group-grid.cards-detail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .journey-step {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .journey::before {
+    left: 21px;
+  }
+
+  .journey-marker {
+    width: 44px;
+    height: 44px;
+  }
+
+  .journey-outcomes {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .group-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-marker,
+  .journey-outcome,
+  .award-row,
+  .award-row::before,
+  .award-row > * {
+    transition: none;
+  }
 }

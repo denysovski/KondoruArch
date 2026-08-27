@@ -64,18 +64,18 @@ export const metadata: Metadata = {
 
 const approachCards = [
   {
-    title: 'Find it',
-    copy: 'Off-market first, portals last. Six homes worth the trip rather than thirty that are not.',
+    title: 'Off-market first',
+    copy: 'We call owners before a listing exists, so you see six homes worth the trip rather than thirty that are not.',
     action: 'Browse the list',
   },
   {
-    title: 'Prove it',
-    copy: 'An independent survey and a price benchmarked against real comparable sales, before you commit a euro.',
+    title: 'Surveyed before you offer',
+    copy: 'An independent structural report and a price benchmarked against completed sales, read with you line by line.',
     action: 'How we price',
   },
   {
-    title: 'Shape it',
-    copy: 'The studio reworks what needs reworking, from a single kitchen to a whole floor plan.',
+    title: 'Redrawn if it needs it',
+    copy: 'The studio reworks whatever is not right, from one awkward kitchen to a whole floor plan, under a single contract.',
     action: 'Meet the studio',
   },
 ]
@@ -263,9 +263,8 @@ export default function FlatPreviewPage() {
           </div>
 
           <div className="showcase-cards">
-            {approachCards.map((card, i) => (
+            {approachCards.map((card) => (
               <div key={card.title} className="showcase-card">
-                <span className="showcase-card-index">{`0${i + 1}`}</span>
                 <strong>{card.title}</strong>
                 <p>{card.copy}</p>
                 <span className="showcase-card-more">

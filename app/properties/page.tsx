@@ -45,10 +45,54 @@ const listingSchema = {
 }
 
 const groups = [
-  { id: 'new-builds', name: 'New builds', copy: 'Completing in 2026 and 2027, reserved off plan.' },
-  { id: 'waterfront', name: 'Waterfront', copy: 'Harbour, lake and river frontage.' },
-  { id: 'family', name: 'Family', copy: 'Two bedrooms and up, near schools and green space.' },
-  { id: 'investment', name: 'Investment', copy: 'Let-ready stock with modelled yields.' },
+  {
+    id: 'new-builds',
+    name: 'New builds',
+    meta: 'From €290,000',
+    copy: 'Completing in 2026 and 2027, reserved off plan. You are buying a drawing and a contract, so the contract is the part we read hardest.',
+    points: [
+      'Staged payments held in escrow, never paid direct',
+      'A completion date with a penalty behind it',
+      'Specification locked at reservation, in writing',
+      'Two site visits during construction, with us',
+    ],
+  },
+  {
+    id: 'waterfront',
+    name: 'Waterfront',
+    meta: 'From €355,000',
+    copy: 'Harbour, lake and river frontage. Wonderful to live on and unforgiving to build on, which is where most of the checking goes.',
+    points: [
+      'Flood mapping and insurance quoted before you offer',
+      'Facade and balcony corrosion inspected, not assumed',
+      'Mooring, jetty and slipway rights confirmed',
+      'Winter light modelled, not just the summer brochure',
+    ],
+  },
+  {
+    id: 'family',
+    name: 'Family',
+    meta: 'From €410,000',
+    copy: 'Two bedrooms and up, near schools and green space. Bought for the ten years after the move rather than the week of it.',
+    points: [
+      'School catchments checked against the actual address',
+      'Noise measured on a weekday morning and a Friday night',
+      'Lift, pram and bike storage that genuinely fit',
+      'Room to add a wall later without touching structure',
+    ],
+  },
+  {
+    id: 'investment',
+    name: 'Investment',
+    meta: '4.1 to 5.4% net',
+    copy: 'Let-ready stock with modelled yields. Our number is after costs, which is why it is lower than the one you were shown elsewhere.',
+    points: [
+      'Yield modelled after service charge, tax and voids',
+      'Twelve months of local letting data, not asking rents',
+      'Service charge accounts read three years back',
+      'Management quoted at a fixed fee, or left to you',
+    ],
+  },
 ]
 
 const editorialPoints = [
@@ -101,8 +145,19 @@ export default function PropertiesPage() {
         <div className="group-grid cards-plain reveal-group">
           {groups.map((group) => (
             <article key={group.id} id={group.id} className="group-card">
-              <h3>{group.name}</h3>
+              <div className="group-card-head">
+                <h3>{group.name}</h3>
+                <span className="group-meta">{group.meta}</span>
+              </div>
               <p>{group.copy}</p>
+              <ul className="group-points">
+                {group.points.map((point) => (
+                  <li key={point}>
+                    <Check size={12} strokeWidth={3} />
+                    {point}
+                  </li>
+                ))}
+              </ul>
               <span className="group-count">
                 {listings.filter((l) => l.category === group.name).length} listed
               </span>

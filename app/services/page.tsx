@@ -133,12 +133,22 @@ export default function ServicesPage() {
                   <Clock size={14} strokeWidth={2} />
                   {service.timeline}
                 </p>
-                <Button href="/#contact">Start here</Button>
               </aside>
             </div>
           </div>
         </section>
       ))}
+
+      {/* One call to action for all four services, under the last of
+          them, rather than the same button four times over. */}
+      <section className="service-start">
+        <p>
+          Whichever of the four you need, it starts the same way: half an hour on a call, no fee and
+          no commitment, at the end of which we will tell you which service you actually need and
+          whether we are the right people for it.
+        </p>
+        <Button href="/#contact">Start here</Button>
+      </section>
 
       <section className="section page-section faq faq-page">
         <div className="faq-side">
