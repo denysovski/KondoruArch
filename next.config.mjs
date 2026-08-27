@@ -6,11 +6,19 @@
  *
  * @type {import('next').NextConfig}
  */
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 const nextConfig = {
   output: 'export',
   basePath,
+  turbopack: {
+    // Pin the workspace root to this folder. Left to infer it, Turbopack
+    // walks up looking for a lockfile and can land somewhere far too wide.
+    root: path.dirname(fileURLToPath(import.meta.url)),
+  },
   // Trailing slashes make every route a directory with its own index.html,
   // which is what a plain static host can resolve without rewrite rules.
   trailingSlash: true,
