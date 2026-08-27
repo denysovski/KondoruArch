@@ -5521,21 +5521,30 @@ img {
  * Band metric cards — counters, copy and a corner link
  * ---------------------------------------------------------------- */
 
-.band-metric {
+/* Blue rather than clear glass, so the three figures read as a set of
+   cards rather than as three washed patches of the photograph. Written
+   as literal rgba because the palette tokens are opaque hex and these
+   need an alpha channel: the fill is --blue-700 and the edge is
+   --blue-300, both let through enough to keep the building visible. */
+.band-metrics > .band-metric {
   position: relative;
   display: block;
   padding: 24px 28px 22px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(123, 167, 212, 0.45);
+  /* A gradient rather than one flat tint: a single alpha reads blue over
+     the dark half of the photograph and washes out to grey-green over
+     the bright half. Weighting the top-left keeps the card blue wherever
+     it lands, and the lighter end stays see-through. */
+  background: linear-gradient(140deg, rgba(20, 80, 140, 0.78) 0%, rgba(31, 107, 184, 0.52) 100%);
   backdrop-filter: blur(18px) saturate(140%);
   color: #fff;
   transition: background 0.45s var(--ease), border-color 0.45s var(--ease);
 }
 
-.band-metric:hover {
-  background: rgba(255, 255, 255, 0.17);
-  border-color: rgba(255, 255, 255, 0.32);
+.band-metrics > .band-metric:hover {
+  background: linear-gradient(140deg, rgba(20, 80, 140, 0.88) 0%, rgba(31, 107, 184, 0.66) 100%);
+  border-color: rgba(123, 167, 212, 0.68);
 }
 
 .band-metric strong {
