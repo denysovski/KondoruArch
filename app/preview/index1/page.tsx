@@ -813,7 +813,7 @@ export default function FlatPreviewPage() {
               </span>
               <span className="cta-phone">
                 <Phone size={15} strokeWidth={2} />
-                +44 20 0000 0000
+                +44 20 7946 0138
               </span>
             </div>
           </div>

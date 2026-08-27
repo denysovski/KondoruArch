@@ -145,9 +145,9 @@ export function SiteNav() {
         </nav>
 
         <div className="header-side">
-          <a className="header-phone" href="tel:+442000000000">
+          <a className="header-phone" href="tel:+442079460138">
             <Phone size={15} strokeWidth={2} />
-            +44 20 0000 0000
+            +44 20 7946 0138
           </a>
           <a className="header-cta" href="/#contact">
             <CalendarDays size={15} strokeWidth={2} />

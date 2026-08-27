@@ -103,9 +103,9 @@ export function SiteFooter() {
             <Mail size={15} strokeWidth={2} />
             hello@kondoru.com
           </a>
-          <a href="tel:+442000000000">
+          <a href="tel:+442079460138">
             <Phone size={15} strokeWidth={2} />
-            +44 20 0000 0000
+            +44 20 7946 0138
           </a>
           <span>
             <MapPin size={15} strokeWidth={2} />

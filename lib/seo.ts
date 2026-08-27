@@ -95,7 +95,7 @@ export const organisationSchema = {
   logo: `${SITE_URL}${withBase('/icon.svg')}`,
   image: `${SITE_URL}${OG_IMAGE.url}`,
   email: 'hello@kondoru.com',
-  telephone: '+44 20 0000 0000',
+  telephone: '+44 20 7946 0138',
   foundingDate: '2008',
   priceRange: '£££',
   address: {

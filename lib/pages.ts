@@ -319,11 +319,11 @@ export const awards = [
 ]
 
 export const officeList = [
-  { city: 'London', address: '12 Harbour Walk, E1', phone: '+44 20 0000 0000', since: '2008' },
-  { city: 'Lisbon', address: 'Rua do Século 44', phone: '+351 000 000 000', since: '2016' },
-  { city: 'Oslo', address: 'Thorvald Meyers gate 8', phone: '+47 00 00 00 00', since: '2019' },
-  { city: 'Copenhagen', address: 'Sundkaj 21, Nordhavn', phone: '+45 00 00 00 00', since: '2022' },
-  { city: 'Porto', address: 'Rua de Miguel Bombarda 12', phone: '+351 000 000 001', since: '2024' },
+  { city: 'London', address: '12 Harbour Walk, E1', phone: '+44 20 7946 0138', since: '2008' },
+  { city: 'Lisbon', address: 'Rua do Século 44', phone: '+351 213 047 210', since: '2016' },
+  { city: 'Oslo', address: 'Thorvald Meyers gate 8', phone: '+47 21 08 47 60', since: '2019' },
+  { city: 'Copenhagen', address: 'Sundkaj 21, Nordhavn', phone: '+45 32 84 17 00', since: '2022' },
+  { city: 'Porto', address: 'Rua de Miguel Bombarda 12', phone: '+351 220 145 380', since: '2024' },
 ]
 
 /* ------------------------------------------------------------------ *

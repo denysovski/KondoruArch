@@ -136,9 +136,9 @@ export default async function ResidencePage({ params }: { params: Promise<{ id: 
               <strong>{listing.priceLabel}</strong>
               <span>{listing.secondary}</span>
               <Button href="/#contact">Book a viewing</Button>
-              <a className="residence-call" href="tel:+442000000000">
+              <a className="residence-call" href="tel:+442079460138">
                 <Phone size={14} strokeWidth={2} />
-                +44 20 0000 0000
+                +44 20 7946 0138
               </a>
             </aside>
           </div>
@@ -335,9 +335,9 @@ export default async function ResidencePage({ params }: { params: Promise<{ id: 
               <Button variant="light" href="mailto:hello@kondoru.com">
                 hello@kondoru.com
               </Button>
-              <a className="cta-phone" href="tel:+442000000000">
+              <a className="cta-phone" href="tel:+442079460138">
                 <Phone size={15} strokeWidth={2} />
-                +44 20 0000 0000
+                +44 20 7946 0138
               </a>
             </div>
           </div>

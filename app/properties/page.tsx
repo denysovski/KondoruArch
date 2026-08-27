@@ -280,8 +280,8 @@ export default function PropertiesPage() {
               <Button variant="light" href="mailto:hello@kondoru.com">
                 hello@kondoru.com
               </Button>
-              <a className="cta-phone" href="tel:+442000000000">
-                +44 20 0000 0000
+              <a className="cta-phone" href="tel:+442079460138">
+                +44 20 7946 0138
               </a>
             </div>
           </div>
