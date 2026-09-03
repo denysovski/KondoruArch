@@ -77,3 +77,6 @@ Set `NEXT_PUBLIC_BASE_PATH=/KondoruArch` when building for GitHub Pages; leave i
 ## Live Site
 
 https://denysovski.github.io/KondoruArch/
+
+<img alt="szhwhwhjh" src="https://github.com/user-attachments/assets/7f93a714-7680-4aa3-b373-b258b9025286" />
+<img alt="screencapture-localhost-3000-preview-index1-2026-09-03-18_41_02" src="https://github.com/user-attachments/assets/3724f217-c169-48f0-a744-9034ede253d4" />
