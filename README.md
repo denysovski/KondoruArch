@@ -1,82 +1,109 @@
+<div align="center">
+
 # Kondoru
 
-Kondoru is a property and architecture site built to feel editorial, calm and unmistakably premium. The experience pairs a long-scroll homepage with a full set of real sub pages — listings, residence detail, services, projects, studio, journal and search — all sharing one navigation, one photo pipeline and one motion language, and shipping as a static export that any plain host can serve.
+**Buying property, made safe and simple.**
 
-## What It Includes
+A property and architecture studio site: a long-scroll homepage, eighteen residences with their own pages, services, projects, a studio page, a journal and a search that works without a server. Calm, editorial and built around one deep blue.
 
-- A fixed, self-compacting navigation with desktop mega menus and a mobile drawer that stays identical on every page.
-- A cinematic hero with a working search bar that carries its filters straight through to the search page.
-- Long-scroll storytelling sections for the promise, the approach, the cities, the standards, the process, the people and the journal.
-- Two full-bleed photographic bands with text laid over them, one carrying three clickable approach cards and the other the measured numbers behind the work.
-- Eighteen real residences with their own detail pages, galleries, specification tables, neighbour pagination and structured data.
-- A client-side search that filters by deal, city, district, rooms and price without a server behind it.
-- An image pipeline that turns one catalogue file into a WebP ladder, a placeholder tint and the alt text every page reuses.
-- A flat, motion-free copy of the homepage at `/preview/index1` for screenshots.
-- An SEO layer: per-page titles and descriptions, canonicals, Open Graph and Twitter cards, a generated social card, JSON-LD for the organisation, listings, services, articles and FAQs, plus a sitemap with image entries.
-- A test suite that audits the built export rather than the source: alt text, intrinsic sizes, internal links, metadata, structured data and the sitemap.
+[**Open the live site**](https://denysovski.github.io/KondoruArch/) &nbsp;·&nbsp; [Properties](https://denysovski.github.io/KondoruArch/properties/) &nbsp;·&nbsp; [Services](https://denysovski.github.io/KondoruArch/services/) &nbsp;·&nbsp; [Studio](https://denysovski.github.io/KondoruArch/studio/) &nbsp;·&nbsp; [Search](https://denysovski.github.io/KondoruArch/search/)
 
-## Key Sections
+![Next.js](https://img.shields.io/badge/Next.js%2016-06213f?style=flat-square&labelColor=06213f&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React%2019-06213f?style=flat-square&labelColor=06213f&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-06213f?style=flat-square&labelColor=06213f&logo=typescript&logoColor=white)
+![Static export](https://img.shields.io/badge/static%20export-GitHub%20Pages-06213f?style=flat-square&labelColor=06213f)
 
-- The hero section sets the tone with a full-bleed facade, oversized type and a search bar that is the fastest route into the listings.
-- The showcase band sits above the services grid: one photograph at a fixed height, copy laid over it, and three clickable cards for finding, proving and shaping a purchase.
-- The properties rail and the cities grid turn the stock into something browsable, with each city tile opening a pre-filtered search.
-- The band and insight pages carry the measured claims — embodied carbon, winter daylight, fabric warranty — each with its own page and its own evidence.
-- The standards, process and partnership sections explain how the studio works, in the order a client actually meets it.
-- The editorial section on the properties page pairs one photograph with the checks every home passes before it reaches the list, fading up as it arrives.
-- The team, journal and testimonial sections close the story, and the CTA panel hands over the two ways to get in touch.
+<br>
 
-## Technologies
+![Kondoru homepage](docs/screens/01-hero.jpg)
 
-- Next.js 16 (App Router, static export)
-- React 19
-- TypeScript 5.7
-- Tailwind CSS 4 alongside a hand-written design system in `app/globals.css`
-- Sharp (image ingest and optimisation scripts)
-- Lucide icons
-- GitHub Actions and GitHub Pages
+</div>
 
-## Visual Style
+---
 
-The design language is quiet, editorial and built around one deep blue:
+## At a glance
 
-- White and a pale blue-grey tint for surfaces, so photography carries the colour.
-- Deep navy ink for type and for every full-bleed band, with a mid blue reserved for links, counts and active states.
-- Montserrat for display type at tight tracking, Open Sans for body copy at a generous line height.
-- Large radii, hairline borders and layered shadows — a contact edge, a mid lift and a wide ambient pool — for depth without weight.
-- Motion that reveals rather than decorates: masked words that rise into place, staggered card entrances, slow parallax on the bands, and a scroll-velocity pitch on the card decks. All of it collapses to nothing under `prefers-reduced-motion`, and is switched off entirely on the flat preview.
+| | |
+|---|---|
+| **Pages** | Home, Properties with 18 residence pages, Services, Projects, Studio, Journal with articles, Insights, Search and 404. 33 pages in total, all static. |
+| **Navigation** | A floating white bar that fits every screen from a 360 px phone to a wide desktop, compacts on the way down, and opens a mega menu whose highlight and content slide smoothly from item to item. A scrolling drawer on phones and tablets. |
+| **Homes** | Cards with the photo across the top, a thumbnail strip to switch views, specs, highlights and a booking button. Filters by category, two to three cards per view depending on the screen. |
+| **People** | Drawn portraits for the team, a managing director card in the "Inside the work" band, contact rows that wrap cleanly on a phone. |
+| **Motion** | Masked headings that rise into place, staggered card entrances, parallax on the photo bands, and photographs that open up and settle as you scroll. All of it switches off under reduced motion. |
+| **Cookies** | Shown on the first visit, with *Essential only* and *Accept all* side by side at the same size and every optional category off by default. After a choice the button disappears; the footer's *Cookies* link reopens the settings. |
+| **Search** | Deal, city, district, rooms and price, filtered in the browser. The hero search carries its filters straight to the results. |
+| **SEO** | Titles, descriptions, canonicals, Open Graph, a generated social card, JSON-LD for the organisation, listings, services, articles and FAQs, and a sitemap with images. |
+| **Quality** | `npm run check` audits the built site itself: 11,584 checks for alt text, image sizes, internal links, metadata, structured data and the sitemap. |
 
-## Project Structure
+---
 
-- `app/page.tsx` holds the homepage metadata and structured data; `app/home.tsx` is the page itself and controls section order.
-- `app/properties/`, `app/services/`, `app/projects/`, `app/studio/`, `app/journal/`, `app/search/` and `app/insights/` are the sub pages, including the two dynamic routes.
-- `app/preview/index1/` is the flat, motion-free copy of the homepage.
-- `app/globals.css` carries the design tokens and every section's styling.
-- `components/` holds the shared chrome: navigation, footer, cards, galleries, search filters, scroll effects and the `Photo` component every image goes through.
-- `lib/content.ts`, `lib/listings.ts` and `lib/pages.ts` store site copy, the residences and the sub-page content.
-- `lib/photos.ts` and `lib/image-manifest.json` map catalogue keys to renditions, sizes, tints and alt text.
-- `lib/seo.ts` holds the metadata helpers and the schema.org blocks.
-- `scripts/image-sources.mjs` is the single catalogue of every photograph, its source and its alt text.
-- `scripts/ingest-images.mjs` and `scripts/optimize-images.mjs` build `public/img` and the manifest.
-- `scripts/check-site.mjs` audits the built export; `scripts/finish-export.mjs` prepares it for a static host.
-- `assets/source/` holds the masters the pipeline reads, capped at 2000px.
+## Home
 
-## Development
+The homepage follows a buyer's questions in order: who you are, what you do, what is for sale, how you work, and who will answer the phone.
 
-- `npm run dev` starts the local development server.
-- `npm run build` builds the static export into `out/` and prepares it for a static host.
-- `npm run preview` serves `out/` the way GitHub Pages will.
-- `npm run typecheck` runs TypeScript across the project.
-- `npm run check` audits the built export.
-- `npm test` runs the type check, the build and the audit in one pass.
-- `npm run images:ingest` fetches any missing masters into `assets/source`.
-- `npm run images:optimize` rebuilds `public/img`, the photo manifest and the social card.
-- `npm run images` runs both image steps in order.
+| | |
+|---|---|
+| ![Mega menu](docs/screens/02-menu.jpg) **Mega menu.** Hover from Properties to Services and the highlight slides across while the panel's content glides in from that side. | ![Why Kondoru](docs/screens/03-promise.jpg) **Why Kondoru.** The promise in one sentence, three checks and two ways to start. |
+| ![Numbers](docs/screens/04-stats.jpg) **In numbers.** Four cards with the figure in the middle, one line of context and a link onwards. | ![Services](docs/screens/05-services.jpg) **What we do.** Buying, developing, designing and advising. Plain cards, no icons, the title leads. |
+| ![Homes](docs/screens/06-homes.jpg) **Homes ready to move into.** The photo sits on top of each card, the details below, and nothing zooms on hover. | ![Cities](docs/screens/07-cities.jpg) **Six cities.** Each city opens a search that is already filtered. |
+| ![Inside the work](docs/screens/08-band.jpg) **Inside the work.** The full-bleed band with the managing director who signs off every twelve-month review. | ![Standards](docs/screens/09-standards.jpg) **What every building has to earn.** Four standards as a calm list beside the Oslo project. |
+| ![Feature](docs/screens/10-feature.jpg) **Projects slider.** Three projects that change on their own or on a click. | ![Process](docs/screens/11-process.jpg) **Four movements.** Listen, model, detail, deliver. |
+| ![Team](docs/screens/12-team.jpg) **The people.** Drawn portraits, languages, email and phone for each of the four people. | ![Voices](docs/screens/13-voices.jpg) **Voices.** What clients said, one at a time. |
 
-Set `NEXT_PUBLIC_BASE_PATH=/KondoruArch` when building for GitHub Pages; leave it unset for local work and for a root deploy.
+![Contact](docs/screens/14-contact.jpg)
+**Let's build something.** The closing panel with email, phone and the weekly listings letter.
 
-## Live Site
+---
 
-https://denysovski.github.io/KondoruArch/
+## Pages
 
-<img alt="szhwhwhjh" src="https://github.com/user-attachments/assets/7f93a714-7680-4aa3-b373-b258b9025286" />
-<img alt="screencapture-localhost-3000-preview-index1-2026-09-03-18_41_02" src="https://github.com/user-attachments/assets/3724f217-c169-48f0-a744-9034ede253d4" />
+| | |
+|---|---|
+| ![Properties](docs/screens/20-properties.jpg) **Properties.** Eighty-four homes, each surveyed before it reaches the list. | ![Residence](docs/screens/24-residence.jpg) **Residence.** Price and booking at the top, then the gallery, specs and the steps of a purchase. |
+| ![Services](docs/screens/21-services.jpg) **Services.** Four services, priced separately and explained one by one. | ![Studio](docs/screens/22-studio.jpg) **Studio.** The firm's story and the journey from first call to keys. |
+| ![Search](docs/screens/23-search.jpg) **Search.** Every listing on the books, filtered as you type. | ![Footer](docs/screens/15-footer.jpg) **Footer.** The main pages, the Thursday letter and the legal links, including cookie settings. |
+
+---
+
+## Mobile
+
+| | | |
+|:---:|:---:|:---:|
+| <img src="docs/screens/m-hero.jpg" width="230" alt="Mobile hero"><br><sub>Hero</sub> | <img src="docs/screens/m-menu.jpg" width="230" alt="Mobile menu"><br><sub>Menu (the cookie button steps aside)</sub> | <img src="docs/screens/m-cookies.jpg" width="230" alt="Cookie settings"><br><sub>Cookies on the first visit</sub> |
+| <img src="docs/screens/m-stats.jpg" width="230" alt="Mobile numbers"><br><sub>Numbers</sub> | <img src="docs/screens/m-homes.jpg" width="230" alt="Mobile home cards"><br><sub>Home cards</sub> | <img src="docs/screens/m-band.jpg" width="230" alt="Managing director card"><br><sub>Managing director</sub> |
+
+<p align="center"><img src="docs/screens/m-team.jpg" width="230" alt="Mobile team card"><br><sub>Team card</sub></p>
+
+---
+
+## Under the hood
+
+- **Next.js 16** (App Router) as a static export, **React 19**, **TypeScript**
+- A hand-written design system in `app/globals.css`: one deep blue, Montserrat for display, Open Sans for text, large radii and layered shadows
+- **Sharp** image pipeline: one catalogue (`scripts/image-sources.mjs`) becomes a WebP ladder, a placeholder tint and the alt text every page reuses
+- Scroll reveals through IntersectionObserver, and scroll-driven CSS animations for the photographs where the browser supports them
+- GitHub Actions builds, audits and deploys to GitHub Pages on every push to `main`
+
+```
+app/                 pages: home.tsx, properties/, services/, projects/, studio/, journal/, search/, insights/
+components/          navigation, footer, cards, gallery, search filters, cookie settings, drawn portraits
+lib/                 copy (content.ts), residences (listings.ts), sub-page content, SEO helpers, photo manifest
+scripts/             image ingest and optimisation, export audit, static-host finishing
+assets/source/       photo masters, capped at 2000 px
+```
+
+## Run it
+
+```bash
+npm install
+npm run dev          # local development
+npm test             # type check, build and audit the export
+npm run preview      # serve out/ the way GitHub Pages will
+npm run images       # fetch missing photo masters and rebuild public/img
+```
+
+Set `NEXT_PUBLIC_BASE_PATH=/KondoruArch` when building for GitHub Pages; leave it unset for local work.
+
+## Credits
+
+Photographs from [Unsplash](https://unsplash.com) under the Unsplash License; each source is listed in `scripts/image-sources.mjs`. The managing director's portrait is by Vitaly Gariev. Kondoru, its people, prices and numbers are fictional.

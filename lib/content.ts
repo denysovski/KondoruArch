@@ -1,3 +1,4 @@
+import type { SketchKind } from '@/components/sketch-portrait'
 import {
   Award,
   Building2,
@@ -70,6 +71,8 @@ export const stats = [
     value: 1200,
     suffix: '+',
     label: 'Homes matched with new owners',
+    href: '/properties',
+    action: 'Browse the homes',
     copy: 'From harbour studios to family houses, across five European cities since 2008.',
     note: '184 of them in the last twelve months',
   },
@@ -77,6 +80,8 @@ export const stats = [
     value: 230,
     suffix: '+',
     label: 'Families moved forward with us',
+    href: '/services',
+    action: 'How a purchase runs',
     copy: 'Repeat buyers, second homes and the occasional whole building bought together.',
     note: 'Average relationship: seven years',
   },
@@ -84,6 +89,8 @@ export const stats = [
     value: 18,
     suffix: '',
     label: 'Years shaping the skyline',
+    href: '/studio',
+    action: 'Meet the studio',
     copy: 'One office in London became five, and the drawing board never left the business.',
     note: 'Founded 2008, still independent',
   },
@@ -91,6 +98,8 @@ export const stats = [
     value: 96,
     suffix: '%',
     label: 'Clients who come back to us',
+    href: '/#voices',
+    action: 'Read what they say',
     copy: 'They return for the second purchase, the renovation, or to sell when the time is right.',
     note: 'Measured across 2024 and 2025',
   },
@@ -455,6 +464,7 @@ export type TeamMember = {
   phone: string
   languages: string
   image: PhotoName
+  sketch: SketchKind
 }
 
 export const team: TeamMember[] = [
@@ -473,6 +483,7 @@ export const team: TeamMember[] = [
     phone: '+44 20 7946 0141',
     languages: 'English · French · Arabic',
     image: 'people/portrait-amina-belhaj',
+    sketch: 'long',
   },
   {
     name: 'Jonas Vik',
@@ -488,6 +499,7 @@ export const team: TeamMember[] = [
     phone: '+47 21 08 47 62',
     languages: 'Norwegian · English · Danish',
     image: 'people/portrait-jonas-vik',
+    sketch: 'short',
   },
   {
     name: 'Clara Mendes',
@@ -504,6 +516,7 @@ export const team: TeamMember[] = [
     phone: '+351 213 047 216',
     languages: 'Portuguese · English · Spanish',
     image: 'people/portrait-clara-mendes',
+    sketch: 'glasses',
   },
   {
     name: 'Tomas Reiner',
@@ -518,6 +531,7 @@ export const team: TeamMember[] = [
     phone: '+45 32 84 17 09',
     languages: 'German · English · Danish',
     image: 'people/portrait-tomas-reiner',
+    sketch: 'beard',
   },
 ]
 

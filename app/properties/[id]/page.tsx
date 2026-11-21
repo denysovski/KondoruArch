@@ -244,9 +244,8 @@ export default async function ResidencePage({ params }: { params: Promise<{ id: 
         </div>
 
         <div className="group-grid reveal-group tilt">
-          {detail.timeline.map((step, i) => (
+          {detail.timeline.map((step) => (
             <article key={step.title} className="group-card">
-              <span className="group-step">{`0${i + 1}`}</span>
               <h3>{step.title}</h3>
               <p>{step.copy}</p>
             </article>

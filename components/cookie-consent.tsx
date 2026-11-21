@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Check, Cookie, Shield, X } from 'lucide-react'
+import { Cookie, Shield, X } from 'lucide-react'
 
 const STORAGE_KEY = 'kondoru-cookie-choice'
 
@@ -32,7 +32,7 @@ export function CookieConsent() {
   const [ready, setReady] = useState(false)
   const [choice, setChoice] = useState<Choice | null>(null)
   const [open, setOpen] = useState(false)
-  const [analytics, setAnalytics] = useState(true)
+  const [analytics, setAnalytics] = useState(false)
   const [marketing, setMarketing] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
 
@@ -54,6 +54,13 @@ export function CookieConsent() {
     }
 
     setReady(true)
+  }, [])
+
+  // The footer's "Cookies" link reopens the settings at any time.
+  useEffect(() => {
+    const reopen = () => setOpen(true)
+    window.addEventListener('kondoru:cookie-settings', reopen)
+    return () => window.removeEventListener('kondoru:cookie-settings', reopen)
   }, [])
 
   useEffect(() => {
@@ -78,6 +85,9 @@ export function CookieConsent() {
 
   return (
     <>
+      {/* The floating button only exists until a choice is made; after that the
+          settings live behind the "Cookies" link in the footer. */}
+      {!choice && (
       <button
         className={`cookie-fab ${open ? 'is-hidden' : ''}`}
         aria-label="Cookie settings"
@@ -86,6 +96,7 @@ export function CookieConsent() {
         <Cookie size={19} strokeWidth={2} />
         <span>Cookies</span>
       </button>
+      )}
 
       <div
         className={`cookie-backdrop ${open ? 'is-open' : ''}`}
@@ -154,16 +165,17 @@ export function CookieConsent() {
           })}
         </div>
 
+        {/* Reject and accept sit side by side with the same size and weight
+            (EDPB cookie banner guidance, ProUI PE-23 and PE-26). */}
         <div className="cookie-actions">
+          <button className="cookie-reject" onClick={() => save('essential')}>
+            Essential only
+          </button>
           <button className="cookie-accept" onClick={() => save('all')}>
             Accept all
-            <Check size={16} strokeWidth={2.4} />
           </button>
           <button className="cookie-selected" onClick={() => save(analytics || marketing ? 'all' : 'essential')}>
             Save my choice
-          </button>
-          <button className="cookie-reject" onClick={() => save('essential')}>
-            Essential only
           </button>
         </div>
 

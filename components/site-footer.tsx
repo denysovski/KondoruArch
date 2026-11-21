@@ -123,7 +123,13 @@ export function SiteFooter() {
         <div className="footer-legal">
           <Link href="/studio">Privacy</Link>
           <Link href="/studio">Terms</Link>
-          <Link href="/studio">Cookies</Link>
+          <button
+            type="button"
+            className="footer-legal-button"
+            onClick={() => window.dispatchEvent(new Event('kondoru:cookie-settings'))}
+          >
+            Cookies
+          </button>
           <Link href="/studio">Complaints</Link>
         </div>
       </div>

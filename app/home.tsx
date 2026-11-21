@@ -54,9 +54,9 @@ import {
 import { Button, Counter, Heading, Pill } from '@/components/ui-kit'
 import { SearchFilters } from '@/components/search-filters'
 import { SocialBubbles } from '@/components/social-bubbles'
-import { insights } from '@/lib/pages'
 import Link from 'next/link'
 import { Photo } from '@/components/photo'
+import { SketchPortrait } from '@/components/sketch-portrait'
 import type { PhotoName } from '@/lib/photos'
 
 /* ------------------------------------------------------------------ *
@@ -331,19 +331,19 @@ export function Home() {
 
       {/* Stats ------------------------------------------------------ */}
       <section className="stats section-tight">
-        <div className="stats-grid reveal-group tilt">
+        <div className="stats-grid cards-plain stats-centered reveal-group">
           {stats.map((stat) => (
-            <div key={stat.label} className="stat-card">
+            <Link key={stat.label} className="stat-card" href={stat.href}>
               <strong>
                 <Counter value={stat.value} suffix={stat.suffix} />
               </strong>
               <h3>{stat.label}</h3>
               <p>{stat.copy}</p>
-              <span className="stat-note">
-                <Check size={13} strokeWidth={3} />
-                {stat.note}
+              <span className="stat-link">
+                {stat.action}
+                <ArrowUpRight size={15} strokeWidth={2.2} />
               </span>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -412,9 +412,6 @@ export function Home() {
         <div className="services-grid reveal-group tilt">
           {services.map((service) => (
             <article key={service.title} className="service-card">
-              <i className="service-icon">
-                <service.icon size={22} strokeWidth={1.8} />
-              </i>
               <h3>{service.title}</h3>
               <p>{service.copy}</p>
               <ul>
@@ -674,20 +671,27 @@ export function Home() {
               </a>
             </div>
           </div>
-          <div className="band-metrics reveal-group">
-            {insights.map((metric) => (
-              <Link key={metric.slug} className="band-metric" href={`/insights/${metric.slug}`}>
-                <strong>
-                  <Counter value={metric.value} suffix={metric.suffix} />
-                </strong>
-                <b>{metric.title}</b>
-                <span>{metric.card}</span>
-                <i className="band-metric-arrow" aria-hidden="true">
-                  <ArrowUpRight size={16} strokeWidth={2.2} />
-                </i>
-              </Link>
-            ))}
-          </div>
+          <aside className="band-person reveal" aria-label="Who signs off the reviews">
+            <div className="band-person-photo">
+              <Photo name="people/portrait-daniel-whitmore" sizes="(max-width: 1080px) 88vw, 420px" />
+            </div>
+            <div className="band-person-body">
+              <span className="band-person-kicker">Signs off every review</span>
+              <h3>Daniel Whitmore</h3>
+              <p className="band-person-role">Managing director and deputy CEO</p>
+              <p>
+                Reads every twelve-month report before it is published, and calls the residents
+                himself when a building misses its numbers.
+              </p>
+              <div className="band-person-links">
+                <a href="mailto:daniel@kondoru.com">daniel@kondoru.com</a>
+                <Link href="/studio">
+                  <span>Meet the studio</span>
+                  <ArrowUpRight size={15} strokeWidth={2.2} />
+                </Link>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -866,12 +870,9 @@ export function Home() {
             we redesign the scheme rather than lower the standard.
           </p>
 
-          <div className="amenity-list reveal-group tilt">
+          <div className="amenity-list reveal-group">
             {amenities.map((item) => (
               <article key={item.title} className="amenity">
-                <i>
-                  <item.icon size={20} strokeWidth={1.8} />
-                </i>
                 <div>
                   <h4>{item.title}</h4>
                   <p>{item.copy}</p>
@@ -997,7 +998,7 @@ export function Home() {
           {team.map((person) => (
             <article key={person.name} className="team-card">
               <div className="team-media">
-                <Photo name={person.image} sizes="(max-width: 720px) 88vw, (max-width: 1280px) 44vw, 23vw" />
+                <SketchPortrait kind={person.sketch} title={`Drawing of ${person.name}`} />
                 <span className="team-role">{person.role}</span>
               </div>
 
@@ -1017,11 +1018,11 @@ export function Home() {
                 <div className="team-contact">
                   <a href={`mailto:${person.email}`}>
                     <Mail size={14} strokeWidth={2} />
-                    {person.email}
+                    <span>{person.email}</span>
                   </a>
                   <a href={`tel:${person.phone.replace(/\s/g, '')}`}>
                     <Phone size={14} strokeWidth={2} />
-                    {person.phone}
+                    <span>{person.phone}</span>
                   </a>
                 </div>
               </div>

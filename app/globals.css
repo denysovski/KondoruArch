@@ -411,7 +411,12 @@ img {
 }
 
 .button-dark::before {
-  background: var(--blue-700);
+  background: #e7ebf0;
+}
+
+.button-dark:hover,
+.button-blue:hover {
+  color: var(--blue-ink);
 }
 
 .button-blue {
@@ -420,7 +425,7 @@ img {
 }
 
 .button-blue::before {
-  background: var(--blue-ink);
+  background: #e7ebf0;
 }
 
 .button-light {
@@ -429,7 +434,7 @@ img {
 }
 
 .button-light::before {
-  background: var(--blue-100);
+  background: #e7ebf0;
 }
 
 .button-outline {
@@ -438,11 +443,11 @@ img {
 }
 
 .button-outline::before {
-  background: var(--surface-tint);
+  background: #eef1f4;
 }
 
 .button-outline:hover {
-  border-color: var(--blue-200);
+  border-color: #d5dbe3;
 }
 
 .ghost-link {
@@ -528,7 +533,11 @@ img {
    compact one on the way down. Scrolling up a few pixels restores it. */
 .header-inner {
   width: 70%;
-  max-width: var(--shell);
+  /* Never narrower than its own content: at 70% of a laptop screen the five
+     menu items, the phone and the booking button did not fit, and the button
+     spilled out of the pill. */
+  min-width: max-content;
+  max-width: min(var(--shell), 100%);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -1499,7 +1508,7 @@ img {
 .rail {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: min(calc(100% - 26px), 62%);
+  grid-auto-columns: calc((100% - 52px) / 3);
   gap: 26px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -1519,12 +1528,13 @@ img {
   display: none;
 }
 
-/* Two homes side by side: image on the left, the detail sheet on the right. */
+/* One home per card: the photograph across the top, the detail sheet below
+   it, so the picture gets the full card width at every size. */
 .property-card {
   scroll-snap-align: start;
   min-width: 0;
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -1535,7 +1545,6 @@ img {
 }
 
 .property-card:hover {
-  transform: translateY(-8px);
   border-color: var(--blue-200);
   box-shadow: var(--shadow-card-hover);
 }
@@ -1543,7 +1552,8 @@ img {
 .property-media {
   position: relative;
   overflow: hidden;
-  min-height: 340px;
+  aspect-ratio: 4 / 3;
+  flex: none;
   background: var(--surface-tint);
 }
 
@@ -1561,9 +1571,7 @@ img {
   opacity: 1;
 }
 
-.property-card:hover .property-media img.is-shown {
-  transform: scale(1.06);
-}
+
 
 /* Thumbnail cubes replace the old category label: click one and it becomes
    the main image. */
@@ -2423,7 +2431,6 @@ img {
 }
 
 .amenity:hover {
-  transform: translate3d(10px, -4px, 0);
   border-color: var(--blue-200);
   box-shadow: var(--shadow-card-hover);
 }
@@ -3600,7 +3607,9 @@ img {
   }
 }
 
-@media (max-width: 1360px) {
+/* The phone number needs about 170px more than the menu and the button.
+   Below 1440px it moves to the contact section and the footer only. */
+@media (max-width: 1439px) {
   .header-phone {
     display: none;
   }
@@ -3676,12 +3685,14 @@ img {
     width: 100%;
   }
 
+  /* Compact bar on tablets holds the wordmark, the booking button and the
+     menu button; 320px was too narrow and pushed the menu button outside. */
   .site-header.is-compact .header-inner {
-    width: min(320px, 100%);
+    width: min(420px, 100%);
   }
 
   .rail {
-    grid-auto-columns: 100%;
+    grid-auto-columns: calc((100% - 26px) / 2);
   }
 
   .team-grid {
@@ -3706,6 +3717,14 @@ img {
 
   .header-cta {
     display: none;
+  }
+
+  .header-inner {
+    padding-left: 20px;
+  }
+
+  .site-header.is-compact .header-inner {
+    width: min(300px, 100%);
   }
 
   .hero-content {
@@ -3776,16 +3795,7 @@ img {
   }
 
   .rail {
-    grid-auto-columns: 90%;
-  }
-
-  .property-card {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .property-media {
-    min-height: 240px;
-    aspect-ratio: 16 / 11;
+    grid-auto-columns: 86%;
   }
 
   .property-body {
@@ -4166,6 +4176,20 @@ img {
 .mobile-menu.is-open {
   display: flex;
   animation: dropIn 0.4s var(--ease) both;
+}
+
+/* On short screens the open drawer was taller than the viewport, so its
+   booking button fell off the bottom under the cookie button. The drawer now
+   scrolls on its own, and the header sits above the cookie button while the
+   menu is open. */
+.mobile-menu {
+  max-height: calc(100svh - var(--header-h, 76px) - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.site-header.is-menu-open {
+  z-index: 85;
 }
 
 .mobile-group {
@@ -5184,8 +5208,8 @@ img {
     border-color 0.4s var(--ease);
 }
 
-.cookie-accept {
-  grid-column: 1 / -1;
+.cookie-accept,
+.cookie-actions .cookie-reject {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -5195,19 +5219,31 @@ img {
 }
 
 .cookie-accept:hover {
-  background: var(--blue-700);
+  background: #17314f;
   transform: translateY(-2px);
 }
 
-.cookie-selected,
-.cookie-reject {
+.cookie-actions .cookie-reject {
+  background: var(--blue-ink);
+  color: #fff;
+}
+
+.cookie-actions .cookie-selected {
+  grid-column: 1 / -1;
+}
+
+.cookie-selected {
   background: #fff;
   border-color: var(--border);
   color: var(--blue-ink);
 }
 
-.cookie-selected:hover,
-.cookie-reject:hover {
+.cookie-actions .cookie-reject:hover {
+  background: #17314f;
+  transform: translateY(-2px);
+}
+
+.cookie-selected:hover {
   border-color: var(--blue-200);
   background: var(--surface-tint);
   transform: translateY(-2px);
@@ -7855,3 +7891,395 @@ html:has(.static-page) *::after {
     transition: none;
   }
 }
+
+/* ================================================================== *
+ * November 2026 refinements
+ * ================================================================== */
+
+/* Dark buttons turn a soft off-white on hover, so the arrow bubble swaps
+   to navy to stay visible. */
+.button-dark:hover .arrow-bubble,
+.button-blue:hover .arrow-bubble {
+  background: var(--blue-ink);
+  color: #fff;
+}
+
+.property-book:hover {
+  background: #e7ebf0;
+  color: var(--blue-ink);
+}
+
+.header-cta:hover {
+  background: #17314f;
+}
+
+/* ---------------------------------------------------------------- *
+ * Navigation: one highlight that slides between the items, and panel
+ * content that slides in from the side the pointer came from.
+ * ---------------------------------------------------------------- */
+
+.header-nav {
+  position: relative;
+}
+
+.nav-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  border-radius: var(--radius-pill);
+  background: var(--surface-blue);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.42s var(--ease), width 0.42s var(--ease), opacity 0.25s var(--ease-soft);
+}
+
+.nav-indicator.is-visible {
+  opacity: 1;
+}
+
+.header-nav-item {
+  position: relative;
+  z-index: 1;
+}
+
+.header-nav-item.is-open,
+.header-nav-item.is-open:hover {
+  background: transparent;
+}
+
+.header-nav-item:hover {
+  background: transparent;
+}
+
+.mega {
+  transition: opacity 0.22s var(--ease-soft), visibility 0.22s, height 0.42s var(--ease);
+}
+
+.mega-inner {
+  animation: megaSwap 0.42s var(--ease) both;
+}
+
+@keyframes megaSwap {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--mega-from, 0px), 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * Stat cards: the number in the middle, one line, a way onward
+ * ---------------------------------------------------------------- */
+
+.stats-grid.cards-plain.stats-centered {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stats-centered .stat-card {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 300px;
+  padding: 40px 28px 32px;
+  text-align: center;
+  color: inherit;
+}
+
+.stats-centered .stat-card strong {
+  font-size: clamp(44px, 4.4vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--blue-ink);
+}
+
+.stats-centered .stat-card h3 {
+  margin-top: 8px;
+  max-width: 18ch;
+}
+
+.stats-centered .stat-card p {
+  max-width: 30ch;
+}
+
+.stat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-700);
+  transition: gap 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.js .stats-grid.cards-plain.reveal-group[data-in] > .stat-card:hover,
+.stats-grid.cards-plain.stats-centered > .stat-card:hover {
+  border-color: var(--blue-200);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.stats-centered .stat-card:hover .stat-link {
+  gap: 12px;
+  color: var(--blue-ink);
+}
+
+@media (max-width: 1080px) {
+  .stats-grid.cards-plain.stats-centered {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .stats-grid.cards-plain.stats-centered {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stats-centered .stat-card {
+    min-height: 0;
+  }
+}
+
+/* Service and standard cards carry no icons: the title leads. */
+.service-card h3 {
+  margin-top: 4px;
+}
+
+.amenity {
+  padding: 28px 32px;
+}
+
+/* ---------------------------------------------------------------- *
+ * Band: the person who signs off the reviews
+ * ---------------------------------------------------------------- */
+
+.band-person {
+  justify-self: end;
+  width: min(100%, 440px);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  color: var(--blue-ink);
+  box-shadow: 0 2px 4px rgba(6, 33, 63, 0.2), 0 30px 70px -24px rgba(6, 33, 63, 0.6);
+}
+
+.band-person-photo {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--surface-tint);
+}
+
+.band-person-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+
+.band-person-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 26px 30px 28px;
+}
+
+.band-person-kicker {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-500);
+}
+
+.band-person h3 {
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 1.8vw, 27px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--blue-ink);
+}
+
+.band-person-role {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue-700);
+}
+
+.band-person-body > p:not(.band-person-role) {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+.band-person-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  margin-top: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.band-person-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--blue-700);
+  overflow-wrap: anywhere;
+  transition: color 0.35s var(--ease), gap 0.35s var(--ease);
+}
+
+.band-person-links a:hover {
+  color: var(--blue-ink);
+  gap: 9px;
+}
+
+@media (max-width: 1080px) {
+  .band-person {
+    justify-self: start;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * Team: drawn portraits and contact rows that never overflow
+ * ---------------------------------------------------------------- */
+
+.sketch-portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.team-media {
+  background: #f5f8fb;
+}
+
+.team-contact {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.team-contact a {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.team-contact a span {
+  overflow-wrap: anywhere;
+}
+
+.team-contact svg {
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .team-card {
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .team-media {
+    flex: none;
+    align-self: center;
+    width: min(100%, 260px);
+    min-height: 0;
+    aspect-ratio: 5 / 6;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * Cookies: out of the way while the mobile menu is open; the footer
+ * link reopens the settings after a choice.
+ * ---------------------------------------------------------------- */
+
+.menu-open .cookie-fab,
+.menu-open .cookie-panel,
+.menu-open .cookie-backdrop {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.footer-legal-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.4s var(--ease);
+}
+
+.footer-legal-button:hover {
+  color: var(--blue-700);
+}
+
+/* ---------------------------------------------------------------- *
+ * Progressive scroll: photographs open up and settle as they come into
+ * view, tied to the scroll position rather than a timer. Browsers
+ * without scroll-driven animations, and anyone who prefers reduced
+ * motion, simply see the finished state.
+ * ---------------------------------------------------------------- */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sticky-media,
+    .feature-stage,
+    .journal-media,
+    .ventures-carousel,
+    .cta-panel {
+      animation: kdOpenUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+    }
+
+    .sticky-media > img,
+    .journal-media img {
+      animation: kdSettle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+  }
+}
+
+@keyframes kdOpenUp {
+  from {
+    clip-path: inset(6% 5% 6% 5% round var(--radius-lg));
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--radius-lg));
+    opacity: 1;
+  }
+}
+
+@keyframes kdSettle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+

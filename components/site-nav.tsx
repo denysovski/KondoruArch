@@ -25,6 +25,32 @@ export function SiteNav() {
     setOpenPanel(null)
   }, [])
 
+  // While the mobile menu is open the cookie button and dialog step aside.
+  useEffect(() => {
+    document.documentElement.classList.toggle('menu-open', menuOpen)
+    return () => document.documentElement.classList.remove('menu-open')
+  }, [menuOpen])
+
+  // One highlight slides between the menu items instead of each item
+  // lighting up on its own, and the panel content slides in from the side
+  // the pointer came from.
+  const navRef = useRef<HTMLElement>(null)
+  const [indicator, setIndicator] = useState<{ x: number; w: number } | null>(null)
+  const [direction, setDirection] = useState(0)
+  const lastIndex = useRef(-1)
+
+  useEffect(() => {
+    if (!openPanel) {
+      lastIndex.current = -1
+      return
+    }
+    const index = navItems.findIndex((item) => item.label === openPanel)
+    setDirection(lastIndex.current < 0 ? 0 : Math.sign(index - lastIndex.current))
+    lastIndex.current = index
+    const button = navRef.current?.querySelectorAll<HTMLElement>('.header-nav-item')[index]
+    if (button) setIndicator({ x: button.offsetLeft, w: button.offsetWidth })
+  }, [openPanel])
+
   // Route changes should always leave the menus closed.
   useEffect(() => {
     closeAll()
@@ -118,7 +144,7 @@ export function SiteNav() {
     <header
       className={`site-header ${scrolled ? 'is-scrolled' : ''} ${compact ? 'is-compact' : ''} ${
         openPanel ? 'has-panel' : ''
-      }`}
+      } ${menuOpen ? 'is-menu-open' : ''}`}
       onMouseLeave={scheduleClose}
     >
       <div className="header-inner">
@@ -126,7 +152,12 @@ export function SiteNav() {
           Kondoru
         </Link>
 
-        <nav className="header-nav" aria-label="Main navigation">
+        <nav className="header-nav" aria-label="Main navigation" ref={navRef}>
+          <span
+            className={`nav-indicator ${openPanel && indicator ? 'is-visible' : ''}`}
+            aria-hidden="true"
+            style={indicator ? { transform: `translateX(${indicator.x}px)`, width: indicator.w } : undefined}
+          />
           {navItems.map((item) => (
             <button
               key={item.label}
@@ -175,7 +206,12 @@ export function SiteNav() {
         onMouseLeave={scheduleClose}
       >
         {panel && (
-          <div className="mega-inner" ref={megaInner}>
+          <div
+            className="mega-inner"
+            ref={megaInner}
+            key={panelKey}
+            style={{ '--mega-from': `${direction * 28}px` } as React.CSSProperties}
+          >
             <div className="mega-intro">
               <h3>{panel.title}</h3>
               <p>{panel.copy}</p>

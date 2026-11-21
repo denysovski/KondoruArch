@@ -78,9 +78,6 @@ export default function ServicesPage() {
         <div className="services-grid reveal-group tilt">
           {services.map((service, i) => (
             <article key={service.title} className="service-card">
-              <i className="service-icon">
-                <service.icon size={22} strokeWidth={1.8} />
-              </i>
               <h3>{service.title}</h3>
               <p>{service.copy}</p>
               <ul>
@@ -100,12 +97,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {serviceDetail.map((service, i) => (
+      {serviceDetail.map((service) => (
         <section key={service.id} id={service.id} className="section page-section service-detail">
           <div className="service-detail-head">
-            <div className="reveal">
-              <Pill>{`0${i + 1}`.replace(/^0(\d\d)/, '$1')}</Pill>
-            </div>
             <Heading className="service-detail-title" text={service.name} />
             <p className="service-lead">{service.lead}</p>
           </div>

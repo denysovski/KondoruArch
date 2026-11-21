@@ -114,6 +114,12 @@ export const images = [
     alt: 'Amina Belhaj, founding partner, smiling in a red roll-neck jumper',
   },
   {
+    key: 'people/portrait-daniel-whitmore',
+    max: 1000,
+    remote: unsplash('1738566061874-2160e9f4a064'),
+    alt: 'Daniel Whitmore, managing director, with grey hair and a beard, in a light suit jacket',
+  },
+  {
     key: 'people/portrait-jonas-vik',
     max: 800,
     remote: unsplash('1500648767791-00dcc994a43e'),
