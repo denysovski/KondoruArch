@@ -42,8 +42,39 @@ A property and architecture studio site: a long-scroll homepage, eighteen reside
 
 ## Screenshots
 
-| | |
-|---|---|
+**Navigation.** A floating bar with a mega menu that slides smoothly between sections.
+
+![Mega menu](docs/screens/02-menu.jpg)
+
+**Homes.** Photo on top, details below, filtered by category.
+
+![Homes](docs/screens/06-homes.jpg)
+
+**Inside the work.** A full-bleed band with the managing director's card.
+
+![Inside the work](docs/screens/08-band.jpg)
+
+**The people.** Drawn portraits with languages and direct contacts.
+
+![Team](docs/screens/12-team.jpg)
+
+**Residence.** Price and booking first, then the gallery and specs.
+
+![Residence](docs/screens/24-residence.jpg)
+
+**Journal.** Every article on its own page.
+
+![Article](docs/screens/27-article.jpg)
+
+**Contact.** Start by choosing what you need.
+
+![Contact](docs/screens/25-contact.jpg)
+
+**The form.** Fades in with only the fields that matter.
+
+![Contact form](docs/screens/26-contact-form.jpg)
+
+---|---|
 | ![Mega menu](docs/screens/02-menu.jpg) **Navigation.** A floating bar with a mega menu that slides smoothly between sections. | ![Homes](docs/screens/06-homes.jpg) **Homes.** Photo on top, details below, filtered by category. |
 | ![Inside the work](docs/screens/08-band.jpg) **Inside the work.** A full-bleed band with the managing director's card. | ![Team](docs/screens/12-team.jpg) **The people.** Drawn portraits with languages and direct contacts. |
 | ![Residence](docs/screens/24-residence.jpg) **Residence.** Price and booking first, then the gallery and specs. | ![Article](docs/screens/27-article.jpg) **Journal.** Every article on its own page. |
