@@ -40,44 +40,14 @@ A property and architecture studio site: a long-scroll homepage, eighteen reside
 
 ---
 
-## Home
-
-The homepage follows a buyer's questions in order: who you are, what you do, what is for sale, how you work, and who will answer the phone.
+## Screenshots
 
 | | |
 |---|---|
-| ![Mega menu](docs/screens/02-menu.jpg) **Mega menu.** Hover from Properties to Services and the highlight slides across while the panel's content glides in from that side. | ![Why Kondoru](docs/screens/03-promise.jpg) **Why Kondoru.** The promise in one sentence, three checks and two ways to start. |
-| ![Numbers](docs/screens/04-stats.jpg) **In numbers.** Four cards with the figure in the middle, rolled into place like an odometer, one line of context and a link onwards. | ![Services](docs/screens/05-services.jpg) **What we do.** Buying, developing, designing and advising. Plain cards, no icons, the title leads. |
-| ![Homes](docs/screens/06-homes.jpg) **Homes ready to move into.** The photo sits on top of each card, the details below, and nothing zooms on hover. | ![Cities](docs/screens/07-cities.jpg) **Six cities.** A blue shade fades in slowly on hover and back out on leave; each city opens a search already filtered. |
-| ![Inside the work](docs/screens/08-band.jpg) **Inside the work.** The full-bleed band with the managing director who signs off every twelve-month review. | ![Standards](docs/screens/09-standards.jpg) **What every building has to earn.** Four standards as a calm list beside the Oslo project. |
-| ![Feature](docs/screens/10-feature.jpg) **Projects slider.** Three projects that change on their own or on a click. | ![Process](docs/screens/11-process.jpg) **Four movements.** Listen, model, detail, deliver. |
-| ![Team](docs/screens/12-team.jpg) **The people.** Drawn portraits, languages, email and phone for each of the four people. | ![Voices](docs/screens/13-voices.jpg) **Voices.** What clients said, one at a time. |
-
-![Contact](docs/screens/14-contact.jpg)
-**Let's build something.** The closing panel with email, phone and the weekly listings letter.
-
----
-
-## Pages
-
-| | |
-|---|---|
-| ![Properties](docs/screens/20-properties.jpg) **Properties.** Eighty-four homes, each surveyed before it reaches the list. | ![Residence](docs/screens/24-residence.jpg) **Residence.** Price and booking at the top, then the gallery, specs and the steps of a purchase. |
-| ![Services](docs/screens/21-services.jpg) **Services.** Four services that stand on their own, each explained in one column. | ![Studio](docs/screens/22-studio.jpg) **Studio.** The journey from first call to keys, each stage's timing level with its heading. |
-| ![Contact](docs/screens/25-contact.jpg) **Contact.** Pick what you came for first. | ![Contact form](docs/screens/26-contact-form.jpg) **The form.** Fades in with the fields that need asks for; the selects are drawn to match the site. |
-| ![Newsletter](docs/screens/30-newsletter.jpg) **Newsletter.** Four letters to choose from, name and email, and a clear consent line. | ![Article](docs/screens/27-article.jpg) **Article.** Each journal piece has its own page, with the facts of the piece beside the text. |
-| ![Market reports](docs/screens/28-market.jpg) **Market reports.** The quarter in one table, which turns into cards on a phone. | ![Our history](docs/screens/29-history.jpg) **Our history.** From one desk in 2008 to five offices. |
-| ![Search](docs/screens/23-search.jpg) **Search.** Every listing on the books, filtered as you type. | ![Footer](docs/screens/15-footer.jpg) **Footer.** The main pages, the Thursday letter and the legal links, including cookie settings. |
-
----
-
-## Mobile
-
-| | | |
-|:---:|:---:|:---:|
-| <img src="docs/screens/m-hero.jpg" width="230" alt="Mobile hero"><br><sub>Hero</sub> | <img src="docs/screens/m-menu.jpg" width="230" alt="Mobile menu"><br><sub>Menu (the cookie button steps aside)</sub> | <img src="docs/screens/m-cookies.jpg" width="230" alt="Cookie settings"><br><sub>Cookies on the first visit</sub> |
-| <img src="docs/screens/m-stats.jpg" width="230" alt="Mobile numbers"><br><sub>Numbers</sub> | <img src="docs/screens/m-homes.jpg" width="230" alt="Mobile home cards"><br><sub>Home cards</sub> | <img src="docs/screens/m-band.jpg" width="230" alt="Managing director card"><br><sub>Managing director</sub> |
-| <img src="docs/screens/m-team.jpg" width="230" alt="Mobile team card"><br><sub>Team card</sub> | <img src="docs/screens/m-contact.jpg" width="230" alt="Mobile contact form"><br><sub>Contact form</sub> | <img src="docs/screens/m-history.jpg" width="230" alt="Mobile history timeline"><br><sub>History</sub> |
+| ![Mega menu](docs/screens/02-menu.jpg) **Navigation.** A floating bar with a mega menu that slides smoothly between sections. | ![Homes](docs/screens/06-homes.jpg) **Homes.** Photo on top, details below, filtered by category. |
+| ![Inside the work](docs/screens/08-band.jpg) **Inside the work.** A full-bleed band with the managing director's card. | ![Team](docs/screens/12-team.jpg) **The people.** Drawn portraits with languages and direct contacts. |
+| ![Residence](docs/screens/24-residence.jpg) **Residence.** Price and booking first, then the gallery and specs. | ![Article](docs/screens/27-article.jpg) **Journal.** Every article on its own page. |
+| ![Contact](docs/screens/25-contact.jpg) **Contact.** Start by choosing what you need. | ![Contact form](docs/screens/26-contact-form.jpg) **The form.** Fades in with only the fields that matter. |
 
 ---
 
