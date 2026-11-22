@@ -10,7 +10,7 @@ const bigLinks = [
   { label: 'Projects', href: '/projects' },
   { label: 'Studio', href: '/studio' },
   { label: 'Journal', href: '/journal' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export function SiteFooter() {
@@ -73,7 +73,7 @@ export function SiteFooter() {
 
       <div className="footer-cols">
         <div className="footer-col">
-          <h5>Company</h5>
+          <h3>Company</h3>
           <Link href="/studio">About us</Link>
           <Link href="/studio#people">Our people</Link>
           <Link href="/studio#awards">Awards</Link>
@@ -81,7 +81,7 @@ export function SiteFooter() {
         </div>
 
         <div className="footer-col">
-          <h5>Services</h5>
+          <h3>Services</h3>
           <Link href="/services#buying">Buying</Link>
           <Link href="/services#developing">Developing</Link>
           <Link href="/services#designing">Designing</Link>
@@ -89,7 +89,7 @@ export function SiteFooter() {
         </div>
 
         <div className="footer-col">
-          <h5>Cities</h5>
+          <h3>Cities</h3>
           <Link href="/properties">London</Link>
           <Link href="/properties">Lisbon</Link>
           <Link href="/properties">Oslo</Link>
@@ -98,7 +98,7 @@ export function SiteFooter() {
         </div>
 
         <div className="footer-col footer-contact">
-          <h5>Talk to us</h5>
+          <h3>Talk to us</h3>
           <a href="mailto:hello@kondoru.com">
             <Mail size={15} strokeWidth={2} />
             hello@kondoru.com

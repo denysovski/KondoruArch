@@ -37,7 +37,11 @@ export function photoAlt(name: PhotoName) {
 /** Site-relative URL for one rendition. Widest available unless asked. */
 export function photoSrc(name: PhotoName, width?: number) {
   const entry = photos[name]
-  const pick = width && entry.widths.includes(width) ? width : entry.widths[entry.widths.length - 1]
+  // Without an explicit width, the fallback src is the 1200 rendition (or the
+  // widest below it): browsers pick from srcset anyway, and crawlers, feeds
+  // and the sitemap do not need a 2000px file.
+  const fallback = [...entry.widths].reverse().find((w) => w <= 1200) ?? entry.widths[0]
+  const pick = width && entry.widths.includes(width) ? width : fallback
   return withBase(`/img/${name}-${pick}.webp`)
 }
 

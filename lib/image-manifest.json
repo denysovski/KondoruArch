@@ -240,14 +240,16 @@
     "alt": "Amina Belhaj, founding partner, smiling in a red roll-neck jumper"
   },
   "people/portrait-daniel-whitmore": {
-    "width": 1333,
-    "height": 1666,
+    "width": 2000,
+    "height": 1125,
     "widths": [
       400,
-      800
+      800,
+      1200,
+      1600
     ],
-    "color": "#dddfe1",
-    "alt": "Daniel Whitmore, managing director, with grey hair and a beard, in a light suit jacket"
+    "color": "#8e9792",
+    "alt": "Daniel Whitmore, managing director, smiling in a dark jacket and light blue shirt outside a glass office building"
   },
   "people/portrait-jonas-vik": {
     "width": 1334,

@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
-import { Clock, DoorOpen, FileText, Info, Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { amenities, team } from '@/lib/content'
 import { journey } from '@/lib/studio'
 import { awards, officeList, studioValues } from '@/lib/pages'
 import { Button, Heading, PageHero, Pill } from '@/components/ui-kit'
 import { SocialBubbles } from '@/components/social-bubbles'
 import { Photo } from '@/components/photo'
+import { SketchPortrait } from '@/components/sketch-portrait'
 import { JsonLd } from '@/components/json-ld'
 import { breadcrumbSchema, pageMetadata, photoCard } from '@/lib/seo'
 
@@ -98,12 +99,12 @@ export default function StudioPage() {
           {team.map((person) => (
             <article key={person.name} className="team-card">
               <div className="team-media">
-                <Photo name={person.image} sizes="(max-width: 720px) 88vw, (max-width: 1280px) 44vw, 23vw" />
+                <SketchPortrait kind={person.sketch} title={`Drawing of ${person.name}`} />
                 <span className="team-role">{person.role}</span>
               </div>
 
               <div className="team-body">
-                <h4>{person.name}</h4>
+                <h3>{person.name}</h3>
                 <p className="team-focus">{person.focus}</p>
                 <p className="team-bio">{person.bio}</p>
 
@@ -118,11 +119,11 @@ export default function StudioPage() {
                 <div className="team-contact">
                   <a href={`mailto:${person.email}`}>
                     <Mail size={14} strokeWidth={2} />
-                    {person.email}
+                    <span>{person.email}</span>
                   </a>
                   <a href={`tel:${person.phone.replace(/\s/g, '')}`}>
                     <Phone size={14} strokeWidth={2} />
-                    {person.phone}
+                    <span>{person.phone}</span>
                   </a>
                 </div>
               </div>
@@ -148,14 +149,11 @@ export default function StudioPage() {
             we redesign the scheme rather than lower the standard.
           </p>
 
-          <div className="amenity-list reveal-group tilt">
+          <div className="amenity-list reveal-group">
             {amenities.map((item) => (
               <article key={item.title} className="amenity">
-                <i>
-                  <item.icon size={20} strokeWidth={1.8} />
-                </i>
                 <div>
-                  <h4>{item.title}</h4>
+                  <h3>{item.title}</h3>
                   <p>{item.copy}</p>
                 </div>
               </article>
@@ -187,43 +185,20 @@ export default function StudioPage() {
         <div className="journey reveal-group">
           {journey.map((stage) => (
             <article key={stage.title} className="journey-step">
-              <i className="journey-marker" aria-hidden="true">
-                <stage.icon size={22} strokeWidth={1.7} />
-              </i>
+              <span className="journey-marker" aria-hidden="true" />
 
               <div className="journey-body">
-                <h3>
-                  {stage.title}
-                  <span className="journey-clock">
-                    <Clock size={12} strokeWidth={2.4} />
-                    {stage.duration}
-                  </span>
-                </h3>
+                <h3>{stage.title}</h3>
                 <p>{stage.copy}</p>
               </div>
 
-              <div className="journey-outcomes">
-                <div className="journey-outcome">
-                  <FileText size={16} strokeWidth={2} />
-                  <span>
-                    <b>You end up with</b>
-                    {stage.deliverable}
-                  </span>
-                </div>
-                <div className="journey-outcome is-exit">
-                  <DoorOpen size={16} strokeWidth={2} />
-                  <span>
-                    <b>Stop here and</b>
-                    {stage.exit}
-                  </span>
-                </div>
-              </div>
+              <span className="journey-clock">{stage.duration}</span>
+
             </article>
           ))}
         </div>
 
         <p className="journey-note reveal">
-          <Info size={16} strokeWidth={2} />
           Nothing above is a retainer. Each stage is quoted before it starts and invoiced when it
           ends, so the most you are ever committed to is the one you are in.
         </p>

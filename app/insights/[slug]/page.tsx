@@ -99,7 +99,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
           ))}
 
           <div className="insight-actions">
-            <Button href="/#contact">Ask us about this</Button>
+            <Button href="/contact">Ask us about this</Button>
             <Link className="property-details" href="/projects">
               See it in the projects
             </Link>

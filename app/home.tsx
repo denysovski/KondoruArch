@@ -56,6 +56,7 @@ import { SearchFilters } from '@/components/search-filters'
 import { SocialBubbles } from '@/components/social-bubbles'
 import Link from 'next/link'
 import { Photo } from '@/components/photo'
+import { photoSrc, photoSrcSet } from '@/lib/photos'
 import { SketchPortrait } from '@/components/sketch-portrait'
 import type { PhotoName } from '@/lib/photos'
 
@@ -202,14 +203,47 @@ export function Home() {
     node.scrollBy({ left: direction * step, behavior: 'smooth' })
   }
 
-  // Fade the rail out, swap the filtered set, then fade it back in.
+  // Warm the browser cache with every home's photos once the rail is close,
+  // so switching a filter never shows an empty card waiting for its image.
+  const preloaded = useRef<HTMLImageElement[]>([])
+  useEffect(() => {
+    const node = rail.current
+    if (!node || typeof IntersectionObserver === 'undefined') return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return
+        observer.disconnect()
+        for (const property of properties) {
+          property.images.forEach((name, i) => {
+            const img = new Image()
+            img.decoding = 'async'
+            img.sizes = i === 0 ? '(max-width: 720px) 88vw, 420px' : '76px'
+            img.srcset = photoSrcSet(name)
+            img.src = photoSrc(name)
+            preloaded.current.push(img)
+          })
+        }
+      },
+      { rootMargin: '900px 0px' },
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
+  // Fade the rail out, swap the filtered set, wait until the new photos are
+  // decoded (they are cached by now), then fade it back in.
   const selectCategory = (next: string) => {
     if (next === category) return
     setRailFading(true)
     window.setTimeout(() => {
       setCategory(next)
       rail.current?.scrollTo({ left: 0, behavior: 'auto' })
-      window.requestAnimationFrame(() => setRailFading(false))
+      window.requestAnimationFrame(() => {
+        const shown = [...(rail.current?.querySelectorAll<HTMLImageElement>('.property-media img.is-shown') ?? [])]
+        const ready = Promise.all(shown.map((img) => img.decode().catch(() => undefined)))
+        const timeout = new Promise((resolve) => window.setTimeout(resolve, 700))
+        Promise.race([ready, timeout]).then(() => setRailFading(false))
+      })
     }, 260)
   }
 
@@ -827,12 +861,12 @@ export function Home() {
                     />
                   ))}
                 </div>
-                <a className="feature-cta" href="#contact">
+                <Link className="feature-cta" href="/projects">
                   <span>View project</span>
                   <i className="arrow-bubble">
                     <ArrowRight size={15} strokeWidth={2.2} />
                   </i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -874,7 +908,7 @@ export function Home() {
             {amenities.map((item) => (
               <article key={item.title} className="amenity">
                 <div>
-                  <h4>{item.title}</h4>
+                  <h3>{item.title}</h3>
                   <p>{item.copy}</p>
                 </div>
               </article>
@@ -934,7 +968,7 @@ export function Home() {
         <div className="process-grid reveal-group tilt">
           {processSteps.map((item) => (
             <article key={item.title} className="process-card">
-              <h4>{item.title}</h4>
+              <h3>{item.title}</h3>
               <p>{item.copy}</p>
               <Link
                 className="process-corner"
@@ -1003,7 +1037,7 @@ export function Home() {
               </div>
 
               <div className="team-body">
-                <h4>{person.name}</h4>
+                <h3>{person.name}</h3>
                 <p className="team-focus">{person.focus}</p>
                 <p className="team-bio">{person.bio}</p>
 
@@ -1055,8 +1089,8 @@ export function Home() {
                 <span className="journal-tag">{post.tag}</span>
               </div>
               <span className="journal-date">{post.date}</span>
-              <h4>{post.title}</h4>
-              <Link className="service-link card-link" href="/journal/all">
+              <h3>{post.title}</h3>
+              <Link className="service-link card-link" href={`/journal/${post.id}`}>
                 <span>Read article</span>
                 <ArrowUpRight size={15} strokeWidth={2} />
               </Link>

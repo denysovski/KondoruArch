@@ -112,12 +112,12 @@ export function ListingCard({ listing, gallery = true }: { listing: Listing; gal
         </div>
 
         <div className="property-actions">
-          <a className="property-book" href="/#contact">
+          <Link className="property-book" href="/contact">
             <span>Book a viewing</span>
             <i className="arrow-bubble">
               <ArrowRight size={15} strokeWidth={2.2} />
             </i>
-          </a>
+          </Link>
           <Link className="property-details" href={`/properties/${listing.id}`}>
             Full details
           </Link>

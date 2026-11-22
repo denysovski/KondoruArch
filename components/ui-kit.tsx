@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Photo } from '@/components/photo'
 import type { PhotoName } from '@/lib/photos'
@@ -56,7 +57,7 @@ export function ArrowBubble({ size = 15 }: { size?: number }) {
 
 export function Button({
   children,
-  href = '/#contact',
+  href = '/contact',
   variant = 'dark',
   arrow = true,
 }: {
@@ -65,62 +66,110 @@ export function Button({
   variant?: 'dark' | 'blue' | 'light' | 'outline'
   arrow?: boolean
 }) {
-  return (
-    <a className={`button button-${variant}`} href={href}>
+  const inner = (
+    <>
       <span>{children}</span>
       {arrow && <ArrowBubble />}
+    </>
+  )
+  // Internal routes go through Link so the GitHub Pages base path is added.
+  return href.startsWith('/') ? (
+    <Link className={`button button-${variant}`} href={href}>
+      {inner}
+    </Link>
+  ) : (
+    <a className={`button button-${variant}`} href={href}>
+      {inner}
     </a>
   )
 }
 
+/**
+ * A number that rolls into place like an odometer: each digit is a column
+ * of 0–9 that spins through one or two full cycles and lands on its value,
+ * the columns settling one after another from the left. The final number is
+ * in the server HTML (search engines, screen readers, no JavaScript); the
+ * columns only appear once the script runs, and not at all under reduced
+ * motion.
+ */
 export function Counter({ value, suffix }: { value: number; suffix: string }) {
+  const text = `${value.toLocaleString('en-US')}${suffix}`
   const ref = useRef<HTMLSpanElement>(null)
+  const [phase, setPhase] = useState<'static' | 'ready' | 'run'>('static')
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (typeof IntersectionObserver === 'undefined') return
+    setPhase('ready')
+  }, [])
+
+  useEffect(() => {
+    if (phase !== 'ready') return
     const node = ref.current
     if (!node) return
-
-    const format = (n: number) => `${n.toLocaleString('en-US')}${suffix}`
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    if (reduced || typeof IntersectionObserver === 'undefined') {
-      node.textContent = format(value)
-      return
-    }
-
-    let timer: number | undefined
-
-    const run = () => {
-      const duration = 1600
-      const started = Date.now()
-      timer = window.setInterval(() => {
-        const progress = Math.min((Date.now() - started) / duration, 1)
-        const eased = 1 - Math.pow(1 - progress, 3)
-        node.textContent = format(Math.round(value * eased))
-        if (progress === 1 && timer) window.clearInterval(timer)
-      }, 32)
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          observer.disconnect()
-          run()
-        })
+        if (!entries.some((entry) => entry.isIntersecting)) return
+        observer.disconnect()
+        // Two frames so the columns are painted at zero before they move.
+        requestAnimationFrame(() => requestAnimationFrame(() => setPhase('run')))
       },
-      { rootMargin: '0px 0px -8% 0px' },
+      { rootMargin: '0px 0px -12% 0px' },
     )
-
     observer.observe(node)
+    return () => observer.disconnect()
+  }, [phase])
 
-    return () => {
-      observer.disconnect()
-      if (timer) window.clearInterval(timer)
-    }
-  }, [value, suffix])
+  if (phase === 'static') {
+    return (
+      <span ref={ref} className="counter">
+        {text}
+      </span>
+    )
+  }
 
-  return <span ref={ref}>{`0${suffix}`}</span>
+  const chars = [...text]
+  const digitCount = chars.filter((ch) => /\d/.test(ch)).length
+  let seen = 0
+
+  return (
+    <span ref={ref} className={`counter odometer ${phase === 'run' ? 'is-run' : ''}`} aria-label={text} role="img">
+      {chars.map((ch, i) => {
+        if (!/\d/.test(ch)) {
+          return (
+            <span key={i} className="odo-sym" aria-hidden="true">
+              {ch}
+            </span>
+          )
+        }
+        const order = seen++
+        // The right-hand digits travel further, so the number seems to
+        // count up while the left settles first.
+        const cycles = order >= digitCount - 2 ? 2 : 1
+        const stops = cycles * 10 + Number(ch)
+        return (
+          <span
+            key={i}
+            className="odo-col"
+            aria-hidden="true"
+            style={
+              {
+                '--odo-stop': stops,
+                '--odo-delay': `${order * 90}ms`,
+              } as React.CSSProperties
+            }
+          >
+            <span className="odo-strip">
+              {Array.from({ length: stops + 1 }, (_, n) => (
+                <span key={n}>{n % 10}</span>
+              ))}
+            </span>
+            <span className="odo-sizer">{ch}</span>
+          </span>
+        )
+      })}
+    </span>
+  )
 }
 
 export function PageHero({

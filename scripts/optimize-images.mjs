@@ -18,7 +18,13 @@ const SOURCE_DIR = 'assets/source'
 const OUT_DIR = 'public/img'
 const MANIFEST = 'lib/image-manifest.json'
 const WIDTHS = [400, 800, 1200, 1600, 2000]
-const QUALITY = 74
+
+// Quality falls as width rises. The wide renditions are only ever drawn on
+// large or high-density screens, where each pixel is smaller and the eye
+// forgives more compression; the narrow ones are what phones on slow
+// connections get, and there detail per pixel matters most.
+const QUALITY = { 400: 78, 800: 75, 1200: 71, 1600: 68, 2000: 66 }
+const qualityFor = (width) => QUALITY[width] ?? 72
 
 const manifest = {}
 let written = 0
@@ -47,7 +53,10 @@ for (const image of images) {
     const info = await sharp(master)
       .rotate()
       .resize({ width, withoutEnlargement: true })
-      .webp({ quality: QUALITY, effort: 5 })
+      // smartSubsample keeps thin coloured edges (window mullions against
+      // sky) crisp at a few per cent of extra size; effort 6 is the slowest,
+      // smallest setting and only runs when the catalogue changes.
+      .webp({ quality: qualityFor(width), effort: 6, smartSubsample: true })
       .toFile(file)
     written++
     bytes += info.size
@@ -74,6 +83,7 @@ for (const image of images) {
 }
 
 await fs.writeFile(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`)
+
 
 /* ------------------------------------------------------------------ *
  * The social card. One 1200×630 JPEG, because that is what every link

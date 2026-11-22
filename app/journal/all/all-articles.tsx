@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight, Clock, Search, X } from 'lucide-react'
 import { Heading, PageHero, Pill } from '@/components/ui-kit'
@@ -19,7 +19,22 @@ export function AllArticles({ articles }: { articles: Article[] }) {
   const [tag, setTag] = useState('All')
   const [query, setQuery] = useState('')
 
-  const tags = useMemo(() => ['All', ...Array.from(new Set(articles.map((a) => a.tag)))], [articles])
+  // /journal/all#design opens the archive already filtered to that section.
+  useEffect(() => {
+    const apply = () => {
+      const hash = window.location.hash.slice(1)
+      const match = Object.entries(TAG_ANCHOR).find(([, anchor]) => anchor === hash)
+      if (match) setTag(match[0])
+    }
+    apply()
+    window.addEventListener('hashchange', apply)
+    return () => window.removeEventListener('hashchange', apply)
+  }, [])
+
+  const tags = useMemo(
+    () => ['All', ...Array.from(new Set(articles.map((a) => a.tag)))],
+    [articles],
+  )
 
   const counts = useMemo(() => {
     const map: Record<string, number> = { All: articles.length }
@@ -119,9 +134,9 @@ export function AllArticles({ articles }: { articles: Article[] }) {
                   <Clock size={13} strokeWidth={2} />
                   {post.read}
                 </span>
-                <h4>{post.title}</h4>
+                <h3>{post.title}</h3>
                 <p className="journal-excerpt">{post.excerpt}</p>
-                <Link className="service-link card-link" href={`/journal#${post.id}`}>
+                <Link className="service-link card-link" href={`/journal/${post.id}`}>
                   <span>Read article</span>
                   <ArrowUpRight size={15} strokeWidth={2} />
                 </Link>
@@ -131,9 +146,7 @@ export function AllArticles({ articles }: { articles: Article[] }) {
         ) : (
           <div className="archive-empty">
             <h3>Nothing matches that yet</h3>
-            <p>
-              Try a broader term, or clear the filter to see all {articles.length} articles.
-            </p>
+            <p>Try a broader term, or clear the filter to see all {articles.length} articles.</p>
             <button
               className="button button-outline"
               onClick={() => {

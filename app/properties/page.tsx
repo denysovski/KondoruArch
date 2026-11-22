@@ -211,7 +211,7 @@ export default function PropertiesPage() {
               </li>
             ))}
           </ul>
-          <Button href="/#contact">Tell us what you are after</Button>
+          <Button href="/contact">Tell us what you are after</Button>
         </div>
       </section>
 
@@ -228,7 +228,7 @@ export default function PropertiesPage() {
               survey, a price, a completion date. You always know which one you are in.
             </p>
             <div className="band-actions">
-              <Button href="/#contact" variant="light">
+              <Button href="/contact" variant="light">
                 Talk to an agent
               </Button>
             </div>

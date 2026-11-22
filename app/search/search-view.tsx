@@ -90,7 +90,7 @@ export function SearchView({ query }: { query: SearchQuery }) {
             </p>
             <div className="search-empty-actions">
               <Button href="/search">Clear the search</Button>
-              <Link className="property-details" href="/#contact">
+              <Link className="property-details" href="/contact">
                 Tell us what you are looking for
               </Link>
             </div>

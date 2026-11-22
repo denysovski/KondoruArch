@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Clock } from 'lucide-react'
+import { ArrowUpRight, Clock } from 'lucide-react'
+import { ArticleCard } from '@/components/article-card'
 import { journalArticles } from '@/lib/pages'
 import { Button, Heading, PageHero, Pill } from '@/components/ui-kit'
 import { Photo } from '@/components/photo'
@@ -27,17 +28,41 @@ const blogSchema = {
     headline: article.title,
     description: article.excerpt,
     datePublished: new Date(article.date).toISOString().slice(0, 10),
-    url: `${absoluteUrl('/journal/all')}#${article.id}`,
+    url: absoluteUrl(`/journal/${article.id}`),
     image: `${SITE_URL}${photoSrc(article.image, 1200)}`,
     author: { '@type': 'Organization', name: 'Kondoru' },
   })),
 }
 
 const sections = [
-  { id: 'market', name: 'Market', tag: 'Market', copy: 'Prices, rates and the rules that move them' },
-  { id: 'design', name: 'Design', tag: 'Design', copy: 'Details we keep reusing, and why' },
-  { id: 'guide', name: 'Guides', tag: 'Guide', copy: 'The practical ones we send clients anyway' },
-  { id: 'studio-news', name: 'Studio news', tag: 'Studio news', copy: 'Completions, arrivals and open days' },
+  {
+    id: 'market',
+    name: 'Market',
+    tag: 'Market',
+    href: '/journal/market',
+    copy: 'Prices, rates and the rules that move them',
+  },
+  {
+    id: 'design',
+    name: 'Design',
+    tag: 'Design',
+    href: '/journal/all#design',
+    copy: 'Details we keep reusing, and why',
+  },
+  {
+    id: 'guide',
+    name: 'Guides',
+    tag: 'Guide',
+    href: '/journal/guides',
+    copy: 'The practical ones we send clients anyway',
+  },
+  {
+    id: 'studio-news',
+    name: 'Studio news',
+    tag: 'Studio news',
+    href: '/journal/all#studio-news',
+    copy: 'Completions, arrivals and open days',
+  },
 ]
 
 export default function JournalPage() {
@@ -74,9 +99,9 @@ export default function JournalPage() {
             </span>
             <Heading className="journal-lead-title" text={lead.title} />
             <p>{lead.excerpt}</p>
-            <Link className="service-link is-back" href="/journal/all">
-              <ArrowLeft size={15} strokeWidth={2} />
-              <span>Back to all articles</span>
+            <Link className="service-link" href={`/journal/${lead.id}`}>
+              <span>Read the article</span>
+              <ArrowUpRight size={15} strokeWidth={2} />
             </Link>
           </div>
         </article>
@@ -92,20 +117,15 @@ export default function JournalPage() {
           </div>
           <div className="section-head-side reveal" data-delay="0.1">
             <p className="muted">
-              No sponsored posts, no listicles about paint colours. If a piece exists it is because a
-              client asked the question twice.
+              No sponsored posts, no listicles about paint colours. If a piece exists it is because
+              a client asked the question twice.
             </p>
           </div>
         </div>
 
         <div className="group-grid reveal-group tilt">
           {sections.map((section) => (
-            <Link
-              key={section.id}
-              id={section.id}
-              className="group-card"
-              href={`/journal/all#${section.id}`}
-            >
+            <Link key={section.id} id={section.id} className="group-card" href={section.href}>
               <h3>{section.name}</h3>
               <p>{section.copy}</p>
               <span className="group-count">
@@ -133,24 +153,7 @@ export default function JournalPage() {
 
         <div className="journal-grid reveal-group tilt">
           {rest.slice(0, 6).map((post) => (
-            <article key={post.id} id={post.id} className="journal-card">
-              <div className="journal-media">
-                <Photo name={post.image} sizes="(max-width: 1080px) 92vw, 32vw" />
-                <span className="journal-tag">{post.tag}</span>
-              </div>
-              <span className="journal-date">
-                {post.date}
-                <i>·</i>
-                <Clock size={13} strokeWidth={2} />
-                {post.read}
-              </span>
-              <h4>{post.title}</h4>
-              <p className="journal-excerpt">{post.excerpt}</p>
-              <Link className="service-link card-link is-back" href="/journal/all">
-                <ArrowLeft size={15} strokeWidth={2} />
-                <span>Back to all articles</span>
-              </Link>
-            </article>
+            <ArticleCard key={post.id} article={post} />
           ))}
         </div>
 

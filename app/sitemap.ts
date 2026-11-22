@@ -23,6 +23,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: absoluteUrl('/studio'), changeFrequency: 'monthly', priority: 0.7 },
       { url: absoluteUrl('/journal'), changeFrequency: 'weekly', priority: 0.7 },
       { url: absoluteUrl('/journal/all'), changeFrequency: 'weekly', priority: 0.6 },
+      { url: absoluteUrl('/journal/market'), changeFrequency: 'monthly', priority: 0.6 },
+      { url: absoluteUrl('/journal/guides'), changeFrequency: 'monthly', priority: 0.6 },
+      { url: absoluteUrl('/journal/history'), changeFrequency: 'yearly', priority: 0.5 },
+      { url: absoluteUrl('/contact'), changeFrequency: 'yearly', priority: 0.8 },
     ] satisfies MetadataRoute.Sitemap
   ).map((page) => ({ ...page, lastModified: now }))
 
@@ -42,8 +46,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [image(insight.image)],
   }))
 
-  // The journal archive is one page; the articles are anchors on it, so they
-  // are not separate URLs. The lead article dates the page.
+  // Each article has its own page, dated by when it was published.
+  const articles: MetadataRoute.Sitemap = journalArticles.map((article) => ({
+    url: absoluteUrl(`/journal/${article.id}`),
+    lastModified: new Date(article.date),
+    changeFrequency: 'yearly',
+    priority: 0.5,
+    images: [image(article.image)],
+  }))
   const journalUpdated = new Date(journalArticles[0].date)
 
   return [
@@ -52,5 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
     ...residences,
     ...measured,
+    ...articles,
   ]
 }

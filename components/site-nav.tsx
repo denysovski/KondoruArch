@@ -180,13 +180,13 @@ export function SiteNav() {
             <Phone size={15} strokeWidth={2} />
             +44 20 7946 0138
           </a>
-          <a className="header-cta" href="/#contact">
+          <Link className="header-cta" href="/contact">
             <CalendarDays size={15} strokeWidth={2} />
             Book a viewing
-          </a>
-          <a className="mobile-book" href="/#contact" aria-label="Book a viewing">
+          </Link>
+          <Link className="mobile-book" href="/contact" aria-label="Book a viewing">
             <CalendarDays size={18} strokeWidth={2} />
-          </a>
+          </Link>
           <button
             className="burger"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -279,10 +279,10 @@ export function SiteNav() {
           )
         })}
 
-        <a className="mobile-cta" href="/#contact" onClick={closeAll}>
+        <Link className="mobile-cta" href="/contact" onClick={closeAll}>
           <CalendarDays size={16} strokeWidth={2} />
           Book a viewing
-        </a>
+        </Link>
       </div>
     </header>
   )

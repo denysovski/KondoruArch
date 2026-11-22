@@ -42,7 +42,7 @@ export const megaMenu: Record<string, MegaPanel> = {
   },
   Services: {
     title: 'Four ways we work',
-    copy: 'Buying, developing, designing and advising. Priced separately, never bundled.',
+    copy: 'Buying, developing, designing and advising. Each one stands on its own.',
     cta: { label: 'Compare all services', href: '/services' },
     links: [
       { label: 'Buying', copy: 'Search, negotiate, complete', href: '/services#buying' },
@@ -118,25 +118,25 @@ export const megaMenu: Record<string, MegaPanel> = {
   Journal: {
     title: 'Notes worth reading',
     copy: 'Market movements, drawing board detail and the guides we send clients anyway.',
-    cta: { label: 'Read every article', href: '/journal/all' },
+    cta: { label: 'Open the journal', href: '/journal' },
     links: [
-      { label: 'Market', copy: 'Prices, rates and rules', href: '/journal/all#market' },
-      { label: 'Design', copy: 'Details we keep reusing', href: '/journal/all#design' },
-      { label: 'Guides', copy: 'Buying, abroad and at home', href: '/journal/all#guide' },
-      { label: 'Studio news', copy: 'Completions and arrivals', href: '/journal/all#studio-news' },
+      { label: 'Articles', copy: 'Every piece, newest first', href: '/journal/all' },
+      { label: 'Market reports', copy: 'Prices and pace in five cities', href: '/journal/market' },
+      { label: "Buyer's guides", copy: 'Abroad, off-plan, renovation', href: '/journal/guides' },
+      { label: 'Our history', copy: 'From one desk to five offices', href: '/journal/history' },
     ],
     features: [
       {
         title: 'Energy rating rules',
         meta: '14 August 2026',
         image: 'architecture/green-wall-tower',
-        href: '/journal',
+        href: '/journal/energy-rating-rules',
       },
       {
         title: 'Buying from abroad',
         meta: '21 July 2026',
         image: 'architecture/white-block',
-        href: '/journal',
+        href: '/journal/buying-from-abroad',
       },
     ],
   },
@@ -336,6 +336,8 @@ export type Article = {
   date: string
   read: string
   title: string
+  /** Shorter title for search results, when the full one runs past 70 characters. */
+  seoTitle?: string
   excerpt: string
   image: PhotoName
 }
@@ -357,6 +359,7 @@ export const journalArticles: Article[] = [
     date: '2 August 2026',
     read: '8 min read',
     title: 'Five facade details we keep coming back to, and why they work',
+    seoTitle: 'Five facade details we keep coming back to',
     excerpt:
       'A deep reveal, a drip that actually drips, and three more details that survive contact with a real construction programme.',
     image: 'architecture/louvre-facade',
@@ -407,6 +410,7 @@ export const journalArticles: Article[] = [
     date: '22 May 2026',
     read: '9 min read',
     title: 'How buying works, from first viewing to the day you hold keys',
+    seoTitle: 'How buying works, from viewing to keys',
     excerpt:
       'The whole process in eleven steps, with the four points where it usually stalls and what it costs to unstick each one.',
     image: 'architecture/white-block',
@@ -417,6 +421,7 @@ export const journalArticles: Article[] = [
     date: '11 May 2026',
     read: '7 min read',
     title: 'Green facades are not free: what planting actually costs to keep',
+    seoTitle: 'What green facades actually cost to keep',
     excerpt:
       'Irrigation, replanting cycles and the two failure modes nobody budgets for. We priced twelve years of upkeep on four of our own buildings.',
     image: 'architecture/vertical-forest',
@@ -437,6 +442,7 @@ export const journalArticles: Article[] = [
     date: '14 April 2026',
     read: '8 min read',
     title: 'Where timber cores work, and the three places they still do not',
+    seoTitle: 'Where timber cores work, and where they do not',
     excerpt:
       'Cross-laminated timber saves carbon and programme, but fire strategy, acoustics and insurance all have opinions. What we have learned on six schemes.',
     image: 'architecture/timber-corner',

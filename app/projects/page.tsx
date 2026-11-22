@@ -174,7 +174,7 @@ export default function ProjectsPage() {
                   ))}
                 </dl>
 
-                <Link className="service-link" href="/#contact">
+                <Link className="service-link" href="/contact">
                   <span>Ask about this project</span>
                   <ArrowUpRight size={15} strokeWidth={2} />
                 </Link>

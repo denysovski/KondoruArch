@@ -115,9 +115,9 @@ export const images = [
   },
   {
     key: 'people/portrait-daniel-whitmore',
-    max: 1000,
-    remote: unsplash('1738566061874-2160e9f4a064'),
-    alt: 'Daniel Whitmore, managing director, with grey hair and a beard, in a light suit jacket',
+    max: 1600,
+    remote: unsplash('1758599543230-652cc6831d69'),
+    alt: 'Daniel Whitmore, managing director, smiling in a dark jacket and light blue shirt outside a glass office building',
   },
   {
     key: 'people/portrait-jonas-vik',

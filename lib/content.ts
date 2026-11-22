@@ -535,22 +535,25 @@ export const team: TeamMember[] = [
   },
 ]
 
-export type JournalTeaser = { tag: string; date: string; title: string; image: PhotoName }
+export type JournalTeaser = { id: string; tag: string; date: string; title: string; image: PhotoName }
 
 export const journal: JournalTeaser[] = [
   {
+    id: 'energy-rating-rules',
     tag: 'Market',
     date: '14 August 2026',
     title: 'What the new energy rating rules mean for older apartments',
     image: 'architecture/green-wall-tower',
   },
   {
+    id: 'facade-details',
     tag: 'Design',
     date: '2 August 2026',
     title: 'Five facade details we keep coming back to, and why they work',
     image: 'architecture/louvre-facade',
   },
   {
+    id: 'buying-from-abroad',
     tag: 'Guide',
     date: '21 July 2026',
     title: 'Buying from abroad: the eight documents to have ready',

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowUpRight, Check, Clock } from 'lucide-react'
+import { ArrowUpRight, Check } from 'lucide-react'
 import { services, faqs } from '@/lib/content'
 import { serviceDetail } from '@/lib/pages'
 import { Button, Heading, PageHero, Pill } from '@/components/ui-kit'
@@ -11,12 +11,12 @@ import { absoluteUrl } from '@/lib/utils'
 export const metadata: Metadata = pageMetadata({
   title: 'Buying, developing, designing and advising',
   description:
-    'Four property services, priced separately and never quietly bundled: buyer representation at 1.2% on completion, development, architecture and portfolio advice.',
+    'Four property services that stand on their own or work together: buyer representation, development, architecture and portfolio advice across five European cities.',
   path: '/services',
   image: photoCard('architecture/layered-block'),
 })
 
-/** Each service as its own offer, with the fee crawlers can actually read. */
+/** Each service as its own offer. */
 const servicesSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
@@ -26,7 +26,6 @@ const servicesSchema = {
     name: service.name,
     description: service.lead,
     url: absoluteUrl(`/services#${service.id}`),
-    priceSpecification: { '@type': 'PriceSpecification', description: service.price },
   })),
 }
 
@@ -49,14 +48,9 @@ export default function ServicesPage() {
 
       <PageHero
         eyebrow="Services"
-        title="Four services, priced separately, never quietly bundled"
-        copy="Most clients arrive for one of these and end up using three. Each one stands on its own, has its own fee, and ends with something you can take to somebody else for a second opinion."
+        title="Four services that stand on their own, or work as one"
+        copy="Most clients arrive for one of these and end up using three. Each one stands on its own and ends with something you can take to somebody else for a second opinion."
         image="architecture/layered-block"
-        facts={[
-          { value: '1.2%', label: 'Buying fee, on completion' },
-          { value: '4 wks', label: 'Feasibility turnaround' },
-          { value: '12 mo', label: 'Post-handover monitoring' },
-        ]}
       />
 
       <section className="section page-section">
@@ -69,8 +63,7 @@ export default function ServicesPage() {
           </div>
           <div className="section-head-side reveal" data-delay="0.1">
             <p className="muted">
-              The short version first. Each card below links down to the full description, the fee
-              and what is actually included.
+              The short version first. Each card below links down to the full description and what is actually included.
             </p>
           </div>
         </div>
@@ -109,7 +102,7 @@ export default function ServicesPage() {
 
             <div className="service-detail-grid">
               <div>
-                <h4>What is included</h4>
+                <h3>What is included</h3>
                 <ul>
                   {service.includes.map((item) => (
                     <li key={item}>
@@ -120,14 +113,6 @@ export default function ServicesPage() {
                 </ul>
               </div>
 
-              <aside className="service-price">
-                <span>Fee</span>
-                <strong>{service.price}</strong>
-                <p>
-                  <Clock size={14} strokeWidth={2} />
-                  {service.timeline}
-                </p>
-              </aside>
             </div>
           </div>
         </section>
@@ -141,7 +126,7 @@ export default function ServicesPage() {
           no commitment, at the end of which we will tell you which service you actually need and
           whether we are the right people for it.
         </p>
-        <Button href="/#contact">Start here</Button>
+        <Button href="/contact">Start here</Button>
       </section>
 
       <section className="section page-section faq faq-page">
@@ -155,7 +140,7 @@ export default function ServicesPage() {
             a partner will answer within a working day.
           </p>
           <div className="reveal" data-delay="0.16">
-            <Link className="button button-outline" href="/#contact">
+            <Link className="button button-outline" href="/contact">
               <span>Ask us anything</span>
             </Link>
           </div>

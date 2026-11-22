@@ -135,7 +135,7 @@ export default async function ResidencePage({ params }: { params: Promise<{ id: 
             <aside className="residence-price">
               <strong>{listing.priceLabel}</strong>
               <span>{listing.secondary}</span>
-              <Button href="/#contact">Book a viewing</Button>
+              <Button href="/contact">Book a viewing</Button>
               <a className="residence-call" href="tel:+442079460138">
                 <Phone size={14} strokeWidth={2} />
                 +44 20 7946 0138
